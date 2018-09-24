@@ -8,9 +8,7 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-# data manager module
 from model import data_manager
-# common module
 from model import common
 
 

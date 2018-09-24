@@ -1,3 +1,4 @@
+# everything you'll need is imported:
 from model.store import store
 from view import ui
 

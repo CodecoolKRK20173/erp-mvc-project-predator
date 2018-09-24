@@ -1,6 +1,7 @@
 from view import ui
 from model.inventory import inventory
 
+
 def run():
     """
     Starts this module and displays its menu.

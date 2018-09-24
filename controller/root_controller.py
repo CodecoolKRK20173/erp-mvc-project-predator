@@ -1,15 +1,9 @@
-from view import ui  # User Interface
-# Store module
+from view import ui
 from controller import store_controller
-# Human Resources module
 from controller import hr_controller
-# Tool manager module
 from controller import inventory_controller
-# Accounting module
 from controller import accounting_controller
-# Sales module
 from controller import sales_controller
-# Customer Relationship Management (CRM) module
 from controller import crm_controller
 
 def get_choice(options):

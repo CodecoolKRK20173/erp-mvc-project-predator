@@ -1,7 +1,6 @@
 """ Common module
 implement commonly used functions here
 """
-
 import random
 
 

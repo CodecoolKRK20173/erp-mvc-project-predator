@@ -1,5 +1,4 @@
 # everything you'll need is imported:
-# User interface module
 from view import ui
 from model.accounting import accounting
 
