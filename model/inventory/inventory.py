@@ -20,7 +20,7 @@ def add(table, record):
 
     Args:
         table (list): table to add new record to
-        record (str): new record
+        record (list): new record
 
     Returns:
         list: Table with a new record
@@ -54,7 +54,7 @@ def update(table, id_, record):
     Args:
         table: list in which record should be updated
         id_ (str): id of a record to update
-        record (str): updated record
+        record (list): updated record
 
     Returns:
         list: table with updated record

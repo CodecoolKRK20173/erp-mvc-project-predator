@@ -1,4 +1,4 @@
-""" User Interface (terminal_view) module """
+""" Terminal view module """
 
 
 def print_table(table, title_list):
