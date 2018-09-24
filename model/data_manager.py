@@ -1,6 +1,3 @@
-# Do not modify this file
-
-
 def get_table_from_file(file_name):
     """
     Reads csv file and returns it as a list of lists.

@@ -17,33 +17,6 @@ from model import data_manager
 from model import common
 
 
-def run():
-    """
-    Starts this module and displays its menu.
-     * User can access default special features from here.
-     * User can go back to main menu from here.
-
-    Returns:
-        None
-    """
-
-    # you code
-
-
-def show_table(table):
-    """
-    Display a table
-
-    Args:
-        table (list): list of lists to be displayed.
-
-    Returns:
-        None
-    """
-
-    # your code
-
-
 def add(table):
     """
     Asks user for input and adds it into the table.

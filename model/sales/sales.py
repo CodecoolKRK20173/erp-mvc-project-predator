@@ -17,20 +17,6 @@ from model import data_manager
 from model import common
 
 
-def show_table(table):
-    """
-    Display a table
-
-    Args:
-        table (list): list of lists to be displayed.
-
-    Returns:
-        None
-    """
-
-    # your code
-
-
 def add(table):
     """
     Asks user for input and adds it into the table.
