@@ -1,8 +1,3 @@
-# Do not modify this file
-# run this program (the ERP software) from the terminal from thd root directory of this project
-
-
-import sys
 from view import ui  # User Interface
 # Store module
 from controller import store_controller
@@ -17,29 +12,13 @@ from controller import sales_controller
 # Customer Relationship Management (CRM) module
 from controller import crm_controller
 
-
-def choose():
+def get_choice(options):
+    ui.print_menu("Main menu",options, "Exit program")
     inputs = ui.get_inputs(["Please enter a number: "], "")
-    option = inputs[0]
-    if option == "1":
-        store_controller.run()
-    elif option == "2":
-        hr_controller.run()
-    elif option == "3":
-        inventory_controller.run()
-    elif option == "4":
-        accounting_controller.run()
-    elif option == "5":
-        sales_controller.run()
-    elif option == "6":
-        crm_controller.run()
-    elif option == "0":
-        sys.exit(0)
-    else:
-        raise KeyError("There is no such option.")
+    return inputs[0]
 
 
-def handle_menu():
+def run():
     options = ["Store manager",
                "Human resources manager",
                "Inventory manager",
@@ -47,12 +26,20 @@ def handle_menu():
                "Sales manager",
                "Customer Relationship Management (CRM)"]
 
-    ui.print_menu("Main menu", options, "Exit program")
-
-def run():
-    while True:
-        handle_menu()
-        try:
-            choose()
-        except KeyError as err:
-            ui.print_error_message(str(err))
+    choice = None
+    while choice != "0":
+        choice = get_choice(options)
+        if choice == "1":
+            store_controller.run()
+        elif choice == "2":
+            hr_controller.run()
+        elif choice == "3":
+            inventory_controller.run()
+        elif choice == "4":
+            accounting_controller.run()
+        elif choice == "5":
+            sales_controller.run()
+        elif choice == "6":
+            crm_controller.run()
+        else:
+            ui.print_error_message("There is no such choice.")
