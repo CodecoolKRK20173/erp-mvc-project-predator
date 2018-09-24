@@ -1,6 +1,7 @@
 # everything you'll need is imported:
 from model.store import store
 from view import ui
+from controller import common
 
 
 def run():

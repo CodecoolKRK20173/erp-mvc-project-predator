@@ -1,4 +1,4 @@
-""" Common module
+""" Common functions for models
 implement commonly used functions here
 """
 import random

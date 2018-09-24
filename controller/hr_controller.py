@@ -1,7 +1,7 @@
 # everything you'll need is imported:
 from view import ui
 from model.hr import hr
-
+from controller import common
 
 def run():
     """

@@ -1,3 +1,4 @@
+# everything you'll need is imported:
 from view import ui
 from controller import store_controller
 from controller import hr_controller
@@ -5,6 +6,7 @@ from controller import inventory_controller
 from controller import accounting_controller
 from controller import sales_controller
 from controller import crm_controller
+from controller import common
 
 def get_choice(options):
     ui.print_menu("Main menu",options, "Exit program")

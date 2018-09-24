@@ -1,6 +1,7 @@
+# everything you'll need is imported:
 from view import ui
 from model.inventory import inventory
-
+from controller import common
 
 def run():
     """
