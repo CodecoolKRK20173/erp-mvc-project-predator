@@ -1,6 +1,6 @@
 # everything you'll need is imported:
 from model.store import store
-from view import ui
+from view import terminal_view
 from controller import common
 
 

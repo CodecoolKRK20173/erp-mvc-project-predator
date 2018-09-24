@@ -1,5 +1,5 @@
 # everything you'll need is imported:
-from view import ui
+from view import terminal_view
 from controller import store_controller
 from controller import hr_controller
 from controller import inventory_controller
@@ -9,8 +9,8 @@ from controller import crm_controller
 from controller import common
 
 def get_choice(options):
-    ui.print_menu("Main menu",options, "Exit program")
-    inputs = ui.get_inputs(["Please enter a number: "], "")
+    terminal_view.print_menu("Main menu",options, "Exit program")
+    inputs = terminal_view.get_inputs(["Please enter a number: "], "")
     return inputs[0]
 
 
@@ -38,4 +38,4 @@ def run():
         elif choice == "6":
             crm_controller.run()
         else:
-            ui.print_error_message("There is no such choice.")
+            terminal_view.print_error_message("There is no such choice.")

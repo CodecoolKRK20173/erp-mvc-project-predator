@@ -1,5 +1,5 @@
 # everything you'll need is imported:
-from view import ui
+from view import terminal_view
 from model.inventory import inventory
 from controller import common
 
