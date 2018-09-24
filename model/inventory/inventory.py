@@ -1,35 +1,19 @@
-""" Sales module
+""" Inventory module
 
 Data table structure:
     * id (string): Unique and random generated identifier
         at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
-    * title (string): Title of the game sold
-    * price (number): The actual sale price in USD
-    * month (number): Month of the sale
-    * day (number): Day of the sale
-    * year (number): Year of the sale
+    * name (string): Name of item
+    * manufacturer (string)
+    * purchase_year (number): Year of purchase
+    * durability (number): Years it can be used
 """
 
 # everything you'll need is imported:
-# User interface module
-import ui
 # data manager module
-import data_manager
+from model import data_manager
 # common module
-import common
-
-
-def start_module():
-    """
-    Starts this module and displays its menu.
-     * User can access default special features from here.
-     * User can go back to main menu from here.
-
-    Returns:
-        None
-    """
-
-    # your code
+from model import common
 
 
 def show_table(table):
@@ -99,36 +83,29 @@ def update(table, id_):
 # special functions:
 # ------------------
 
-def get_lowest_price_item_id(table):
+def get_available_items(table):
     """
-    Question: What is the id of the item that was sold for the lowest price?
-    if there are more than one item at the lowest price, return the last item by alphabetical order of the title
+    Question: Which items have not exceeded their durability yet?
 
     Args:
         table (list): data table to work on
 
     Returns:
-         string: id
+        list: list of lists (the inner list contains the whole row with their actual data types)
     """
 
     # your code
 
 
-def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
+def get_average_durability_by_manufacturers(table):
     """
-    Question: Which items are sold between two given dates? (from_date < sale_date < to_date)
+    Question: What are the average durability times for each manufacturer?
 
     Args:
         table (list): data table to work on
-        month_from (int)
-        day_from (int)
-        year_from (int)
-        month_to (int)
-        day_to (int)
-        year_to (int)
 
     Returns:
-        list: list of lists (the filtered table)
+        dict: a dictionary with this structure: { [manufacturer] : [avg] }
     """
 
     # your code

@@ -1,24 +1,23 @@
-""" Inventory module
+""" Accounting module
 
 Data table structure:
     * id (string): Unique and random generated identifier
         at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
-    * name (string): Name of item
-    * manufacturer (string)
-    * purchase_year (number): Year of purchase
-    * durability (number): Years it can be used
+    * month (number): Month of the transaction
+    * day (number): Day of the transaction
+    * year (number): Year of the transaction
+    * type (string): in = income, out = outflow
+    * amount (int): amount of transaction in USD
 """
 
 # everything you'll need is imported:
-# User interface module
-import ui
 # data manager module
-import data_manager
+from model import data_manager
 # common module
-import common
+from model import common
 
 
-def start_module():
+def run():
     """
     Starts this module and displays its menu.
      * User can access default special features from here.
@@ -28,7 +27,7 @@ def start_module():
         None
     """
 
-    # your code
+    # you code
 
 
 def show_table(table):
@@ -98,29 +97,30 @@ def update(table, id_):
 # special functions:
 # ------------------
 
-def get_available_items(table):
+def which_year_max(table):
     """
-    Question: Which items have not exceeded their durability yet?
+    Question: Which year has the highest profit? (profit = in - out)
 
     Args:
         table (list): data table to work on
 
     Returns:
-        list: list of lists (the inner list contains the whole row with their actual data types)
+        number
     """
 
     # your code
 
 
-def get_average_durability_by_manufacturers(table):
+def avg_amount(table, year):
     """
-    Question: What are the average durability times for each manufacturer?
+    Question: What is the average (per item) profit in a given year? [(profit)/(items count)]
 
     Args:
         table (list): data table to work on
+        year (number)
 
     Returns:
-        dict: a dictionary with this structure: { [manufacturer] : [avg] }
+        number
     """
 
     # your code

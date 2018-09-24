@@ -1,35 +1,17 @@
-""" Accounting module
+""" Human resources module
 
 Data table structure:
     * id (string): Unique and random generated identifier
         at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
-    * month (number): Month of the transaction
-    * day (number): Day of the transaction
-    * year (number): Year of the transaction
-    * type (string): in = income, out = outflow
-    * amount (int): amount of transaction in USD
+    * name (string)
+    * birth_year (number)
 """
 
 # everything you'll need is imported:
-# User interface module
-import ui
 # data manager module
-import data_manager
+from model import data_manager
 # common module
-import common
-
-
-def start_module():
-    """
-    Starts this module and displays its menu.
-     * User can access default special features from here.
-     * User can go back to main menu from here.
-
-    Returns:
-        None
-    """
-
-    # you code
+from model import common
 
 
 def show_table(table):
@@ -99,30 +81,29 @@ def update(table, id_):
 # special functions:
 # ------------------
 
-def which_year_max(table):
+def get_oldest_person(table):
     """
-    Question: Which year has the highest profit? (profit = in - out)
+    Question: Who is the oldest person?
 
     Args:
         table (list): data table to work on
 
     Returns:
-        number
+        list: A list of strings (name or names if there are two more with the same value)
     """
 
     # your code
 
 
-def avg_amount(table, year):
+def get_persons_closest_to_average(table):
     """
-    Question: What is the average (per item) profit in a given year? [(profit)/(items count)]
+    Question: Who is the closest to the average age?
 
     Args:
         table (list): data table to work on
-        year (number)
 
     Returns:
-        number
+        list: list of strings (name or names if there are two more with the same value)
     """
 
     # your code

@@ -1,32 +1,19 @@
-""" Human resources module
+""" Store module
 
 Data table structure:
     * id (string): Unique and random generated identifier
         at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
-    * name (string)
-    * birth_year (number)
+    * title (string): Title of the game
+    * manufacturer (string)
+    * price (number): Price in dollars
+    * in_stock (number)
 """
 
 # everything you'll need is imported:
-# User interface module
-import ui
 # data manager module
-import data_manager
+from model import data_manager
 # common module
-import common
-
-
-def start_module():
-    """
-    Starts this module and displays its menu.
-     * User can access default special features from here.
-     * User can go back to main menu from here.
-
-    Returns:
-        None
-    """
-
-    # your code
+from model import common
 
 
 def show_table(table):
@@ -81,7 +68,7 @@ def update(table, id_):
     Updates specified record in the table. Ask users for new data.
 
     Args:
-        table (list): list in which record should be updated
+        table: list in which record should be updated
         id_ (str): id of a record to update
 
     Returns:
@@ -96,29 +83,30 @@ def update(table, id_):
 # special functions:
 # ------------------
 
-def get_oldest_person(table):
+def get_counts_by_manufacturers(table):
     """
-    Question: Who is the oldest person?
+    Question: How many different kinds of game are available of each manufacturer?
 
     Args:
         table (list): data table to work on
 
     Returns:
-        list: A list of strings (name or names if there are two more with the same value)
+         dict: A dictionary with this structure: { [manufacturer] : [count] }
     """
 
     # your code
 
 
-def get_persons_closest_to_average(table):
+def get_average_by_manufacturer(table, manufacturer):
     """
-    Question: Who is the closest to the average age?
+    Question: What is the average amount of games in stock of a given manufacturer?
 
     Args:
         table (list): data table to work on
+        manufacturer (str): Name of manufacturer
 
     Returns:
-        list: list of strings (name or names if there are two more with the same value)
+         number
     """
 
     # your code

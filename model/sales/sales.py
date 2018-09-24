@@ -1,34 +1,20 @@
-""" Store module
+""" Sales module
 
 Data table structure:
     * id (string): Unique and random generated identifier
         at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
-    * title (string): Title of the game
-    * manufacturer (string)
-    * price (number): Price in dollars
-    * in_stock (number)
+    * title (string): Title of the game sold
+    * price (number): The actual sale price in USD
+    * month (number): Month of the sale
+    * day (number): Day of the sale
+    * year (number): Year of the sale
 """
 
 # everything you'll need is imported:
-# User interface module
-import ui
 # data manager module
-import data_manager
+from model import data_manager
 # common module
-import common
-
-
-def start_module():
-    """
-    Starts this module and displays its menu.
-     * User can access default special features from here.
-     * User can go back to main menu from here.
-
-    Returns:
-        None
-    """
-
-    # your code
+from model import common
 
 
 def show_table(table):
@@ -83,7 +69,7 @@ def update(table, id_):
     Updates specified record in the table. Ask users for new data.
 
     Args:
-        table: list in which record should be updated
+        table (list): list in which record should be updated
         id_ (str): id of a record to update
 
     Returns:
@@ -98,30 +84,36 @@ def update(table, id_):
 # special functions:
 # ------------------
 
-def get_counts_by_manufacturers(table):
+def get_lowest_price_item_id(table):
     """
-    Question: How many different kinds of game are available of each manufacturer?
+    Question: What is the id of the item that was sold for the lowest price?
+    if there are more than one item at the lowest price, return the last item by alphabetical order of the title
 
     Args:
         table (list): data table to work on
 
     Returns:
-         dict: A dictionary with this structure: { [manufacturer] : [count] }
+         string: id
     """
 
     # your code
 
 
-def get_average_by_manufacturer(table, manufacturer):
+def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
     """
-    Question: What is the average amount of games in stock of a given manufacturer?
+    Question: Which items are sold between two given dates? (from_date < sale_date < to_date)
 
     Args:
         table (list): data table to work on
-        manufacturer (str): Name of manufacturer
+        month_from (int)
+        day_from (int)
+        year_from (int)
+        month_to (int)
+        day_to (int)
+        year_to (int)
 
     Returns:
-         number
+        list: list of lists (the filtered table)
     """
 
     # your code
