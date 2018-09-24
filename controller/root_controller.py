@@ -8,11 +8,6 @@ from controller import sales_controller
 from controller import crm_controller
 from controller import common
 
-def get_choice(options):
-    terminal_view.print_menu("Main menu",options, "Exit program")
-    inputs = terminal_view.get_inputs(["Please enter a number: "], "")
-    return inputs[0]
-
 
 def run():
     options = ["Store manager",
@@ -24,7 +19,7 @@ def run():
 
     choice = None
     while choice != "0":
-        choice = get_choice(options)
+        choice = terminal_view.get_choice(options)
         if choice == "1":
             store_controller.run()
         elif choice == "2":
