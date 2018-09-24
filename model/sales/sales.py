@@ -15,17 +15,17 @@ from model import data_manager
 from model import common
 
 
-def add(table):
+def add(table, record):
     """
-    Asks user for input and adds it into the table.
+    Add new record to table
 
     Args:
         table (list): table to add new record to
+        record (str): new record
 
     Returns:
         list: Table with a new record
     """
-
     # your code
 
     return table
@@ -48,13 +48,14 @@ def remove(table, id_):
     return table
 
 
-def update(table, id_):
+def update(table, id_, record):
     """
-    Updates specified record in the table. Ask users for new data.
+    Updates specified record in the table.
 
     Args:
-        table (list): list in which record should be updated
+        table: list in which record should be updated
         id_ (str): id of a record to update
+        record (str): updated record
 
     Returns:
         list: table with updated record
