@@ -5,12 +5,12 @@ from controller import common
 
 def run():
     """
-    Starts this module and displays its menu.
-     * User can access default special features from here.
-     * User can go back to main menu from here.
+Uruchamia ten moduł i wyświetla jego menu.
+     * Użytkownik ma tutaj dostęp do domyślnych funkcji specjalnych.
+     * Użytkownik może wrócić do głównego menu.
 
-    Returns:
-        None
+    Zwroty:
+        Żaden
     """
 
     # your code
