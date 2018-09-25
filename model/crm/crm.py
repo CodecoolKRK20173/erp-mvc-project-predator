@@ -1,4 +1,3 @@
-# Import else:
 import os
 # User interface module
 import terminal_view
@@ -9,28 +8,29 @@ import common
 
 
 def start_module():
-    printing_printing_table = data_manager.get_printing_table_from_file("crm/customers.csv")
+    table = data_manager.get_table_from_file("crm/customers.csv")
     title = "Customer Relationship Management"
-    list_options = ["Display printing_printing_table", "Add to printing_table", "Remove from printing_table", "Update printing_table", "Show ID of longest name",
-                    "Show list E-mail Newsletter"]
+    list_options = ["Display Table", "Add to Table", "Remove from Table", "Update Table", "Show ID of longest name",
+                    "Show list of E-mail Newsletters"]
     exit_message = "Main Menu"
     while True:
         terminal_view.print_menu(title, list_options, exit_message)
+#        option = terminal_view.get_inputs([""], "Please enter a number")
         get_choice()
         if option[0] == "1":
-            show_printing_table(printing_table)
+            show_table(table)
         elif option[0] == "2":
-            printing_table = add(printing_table)
+            table = add(table)
         elif option[0] == "3":
-            id_ = terminal_view.get_inputs(["ID:"], "What ID you want to remove?")
-            printing_table = remove(printing_table, id_)
+            id_ = terminal_view.get_inputs(["ID:"], "Please, type ID You want to remove")
+            table = remove(table, id_)
         elif option[0] == "4":
-            id_ = terminal_view.get_inputs(["ID: "], "What ID you want to update?")
-            printing_table = update(printing_table, id_)
+            id_ = terminal_view.get_inputs(["ID: "], "Please, type ID You want to update")
+            table = update(table, id_)
         elif option[0] == "5":
-            terminal_view.print_result(get_longest_name_id(printing_table), "The longest ID: ")
+            terminal_view.print_result(get_longest_name_id(table), "The ID with longest name is: ")
         elif option[0] == "6":
-            terminal_view.print_result(get_subscribed_emails(printing_table), "People who give us e-mail: ")
+            terminal_view.print_result(get_subscribed_emails(table), "People with e-mail subscriptions are: ")
         elif option[0] == "0":
             break
         else:
@@ -39,52 +39,58 @@ def start_module():
 
 
 
-def show_printing_table(printing_table):
+def show_table(table):
 
     os.system("clear")
-    title_list = ["ID", "Name", "E-Mail", "Newsletters"]
+    title_list = ["ID", "Name", "E-Mail", "Newsletter"]
 
-    terminal_view.print_printing_table(printing_table, title_list)
+    terminal_view.print_table(table, title_list)
 
-def add(printing_table):
+def add(table):
+
+
+    # your code
     check = True
     while check:
+
         list_labels = ["Name", "E-Mail", "Newsletter"]
-        new_item = terminal_view.get_inputs(list_labels, "Please provide your personal information")
+#        new_item = terminal_view.get_inputs(list_labels, "Please provide your personal information")
+    add()
         validation = common.validate_data(list_labels, new_item)
         if not validation:
             terminal_view.print_error_message("Input not valid.\n")
             continue
-        new_item.insert(0, common.generate_random(printing_table))
-        printing_table.append(new_item)
+        new_item.insert(0, common.generate_random(table))
+        table.append(new_item)
         what_to_do = terminal_view.get_inputs([""], "Press 0 or exit or 1 to add record.")
         if what_to_do[0] == "0":
             check = False
             os.system("clear")
         os.system("clear")
-        show_printing_table(printing_table)
-    data_manager.write_printing_table_to_file("crm/customers.csv", printing_table)
+        show_table(table)
+    data_manager.write_table_to_file("crm/customers.csv", table)
 
-    return printing_table
+    return table
 
 
-def remove(printing_table, id_):
+def remove(table, id_):
+
     check = True
     while check:
 
-        printing_table_dict = common.creat_dict_from_printing_table(printing_table)
-        if id_[0] in list(printing_table_dict.keys()):
-            del printing_table_dict[id_[0]]
-            printing_table = list(printing_table_dict.values())
-            data_manager.write_printing_table_to_file("crm/customers.csv", printing_table)
-            what_to_do = terminal_view.get_inputs([""], "Press 0 or exit or 1 to remove another information.")
+        table_dict = common.creat_dict_from_table(table)
+        if id_[0] in list(table_dict.keys()):
+            del table_dict[id_[0]]
+            table = list(table_dict.values())
+            data_manager.write_table_to_file("crm/customers.csv", table)
+#            what_to_do = terminal_view.get_inputs([""], "Press 0 or exit or 1 to remove another information.")
             if what_to_do[0] == '0':
                 check = False
                 os.system("clear")
             else:
                 os.system("clear")
-                show_printing_table(printing_table)
-                id_ = terminal_view.get_inputs(["Please, type ID to remove: "], "\n")
+                show_table(table)
+#                id_ = terminal_view.get_inputs(["Please, type ID to remove: "], "\n")
         else:
             terminal_view.print_error_message("There is no such element.")
             what_to_do = terminal_view.get_inputs([""], "Press 0 or exit or 1 to try one more time.")
@@ -93,27 +99,28 @@ def remove(printing_table, id_):
                 os.system("clear")
             else:
                 os.system("clear")
-                show_printing_table(printing_table)
+                show_table(table)
                 id_ = terminal_view.get_inputs(['Please, type ID to remove: '], "\n")
-    return printing_table
+    return table
 
 
-def update(printing_table, id_):
+def update(table, id_):
+
     check = True
     while check:
-        printing_table_dict = common.creat_dict_from_printing_table(printing_table)
+        table_dict = common.creat_dict_from_table(table)
 
-        if id_[0] in list(printing_table_dict.keys()):
+        if id_[0] in list(table_dict.keys()):
             list_labels = ["Name", "E-Mail", "Newsletter"]
-            updated_item = terminal_view.get_inputs(list_labels, "Please, provide customer information")
+#            updated_item = terminal_view.get_inputs(list_labels, "Please, provide customer information")
             validation = common.validate_data(list_labels, updated_item)
             if not validation:
-                terminal_view.print_error_message("Input not valid.\n")
+#                terminal_view.print_error_message("Input not valid.\n")
                 continue
             updated_item.insert(0, id_[0])
-            printing_table_dict[id_[0]] = updated_item
-            printing_table = list(printing_table_dict.values())
-            data_manager.write_printing_table_to_file("crm/customers.csv", printing_table)
+            table_dict[id_[0]] = updated_item
+            table = list(table_dict.values())
+            data_manager.write_table_to_file("crm/customers.csv", table)
             os.system("clear")
             what_to_do = terminal_view.get_inputs([""], "Press 0 or exit or 1 to update another information.")
             if what_to_do[0] == '0':
@@ -121,25 +128,26 @@ def update(printing_table, id_):
                 os.system("clear")
             else:
                 os.system("clear")
-                show_printing_table(printing_table)
-                id_ = terminal_view.get_inputs(["Please type ID to update: "], "\n")
+                show_table(table)
+#                id_ = terminal_view.get_inputs(["Please type ID to update: "], "\n")
         else:
             terminal_view.print_error_message("There is no such element.")
-            what_to_do = terminal_view.get_inputs([""], "Press 0 or exit or 1 to try one more time.")
+#            what_to_do = terminal_view.get_inputs([""], "Press 0 or exit or 1 to try one more time.")
             if what_to_do[0] == '0':
                 check = False
                 os.system("clear")
             else:
                 os.system("clear")
-                show_printing_table(printing_table)
-                id_ = terminal_view.get_inputs(["Please, type ID to update: "], "\n")
-    return printing_table
+                show_table(table)
+#                id_ = terminal_view.get_inputs(["Please, type ID to update: "], "\n")
+    return table
 
-def get_longest_name_id(printing_table):
+def get_longest_name_id(table):
 
-    name = printing_table[0][1]
-    character = str(printing_table[0][1][0]).lower()
-    for element in printing_table:
+    # your code
+    name = table[0][1]
+    character = str(table[0][1][0]).lower()
+    for element in table:
         if len(element[1]) > len(name):
             name = element[1]
             id_ = element[0]
@@ -151,11 +159,11 @@ def get_longest_name_id(printing_table):
             os.system("clear")
     return id_
 
+def get_subscribed_emails(table):
 
-def get_subscribed_emails(printing_table):
-
+    # your code
     subs_mail = []
-    for line in printing_table:
+    for line in table:
         if line[-1] == "1":
             subs_mail.append(str(line[2] + ";" + line[1]))
         else:
