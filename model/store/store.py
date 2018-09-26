@@ -102,5 +102,5 @@ def get_average_by_manufacturer(table, manufacturer):
         if manufacturer == table[i][2]:
             number_of_games +=1
             sum_of_games += int(table[i][4])
-        return sum_of_games/number_of_games
+    return sum_of_games/number_of_games
     # your code
