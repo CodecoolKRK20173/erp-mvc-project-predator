@@ -78,12 +78,11 @@ def get_counts_by_manufacturers(table):
     Returns:
          dict: A dictionary with this structure: { [manufacturer] : [count] }
     """
-    table = [['kH34Ju#&', 'Age of Empires II: The Age of Kings', 'Ensemble Studios', '32', '32'], ['jH34Ju#&', 'Age of Mythology', 'Ensemble Studios', '40', '4'], ['tH34Ju#&', 'Age of Empires II: The Conquerors', 'Ensemble Studios', '30', '3'], ['eH34Ju#&', 'Astebreed', 'Edelweiss', '25', '5'], ['bH34Ju#&', "Age of Wonders II: The Wizard's Throne", 'Triumph Studios', '20', '10'], ['vH34Ju#&', 'AudioSurf', 'Dylan Fitterer', '23', '1']]
+
     dictionary = {}
     for record in table :
         dictionary[record[2]] = dictionary.get(record[2], 0) + 1
     return dictionary
-print(get_counts_by_manufacturers('table'))
 
 
 def get_average_by_manufacturer(table, manufacturer):
@@ -97,5 +96,11 @@ def get_average_by_manufacturer(table, manufacturer):
     Returns:
          number
     """
-
+    number_of_games = 0
+    sum_of_games = 0
+    for i in range (0,len(table)):
+        if manufacturer = table[i][2]:
+            number_of_games +=1
+            sum_of_games += int(table[i][4])
+        return sum_of_games/number_of_games
     # your code
