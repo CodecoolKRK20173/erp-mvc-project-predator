@@ -25,7 +25,6 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    # your code
 
     return table
 
@@ -42,7 +41,6 @@ def remove(table, id_):
         list: Table without specified record.
     """
 
-    # your code
 
     return table
 
@@ -78,8 +76,16 @@ def get_available_items(table):
     Returns:
         list: list of lists (the inner list contains the whole row with their actual data types)
     """
-
-    # your code
+    
+    available_durability = []
+    all_data_with_available_durability = []
+    for element in table:
+        year_from_table = int(element[-2])
+        durability_from_table = int(element[-1])
+        sum_durability = year_from_table + durability_from_table
+        if sum_durability >= 2018:
+            available_durability.append(element)
+    return available_durability
 
 
 def get_average_durability_by_manufacturers(table):
