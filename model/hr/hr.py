@@ -8,8 +8,8 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from model import data_manager
-from model import common
+#from model import data_manager
+#from model import common
 
 
 
@@ -24,7 +24,7 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    # your code
+    
 
     return table
 
@@ -66,30 +66,32 @@ def update(table, id_, record):
 
 # special functions:
 # ------------------
+table = [['kH34Ju#&', 'Joe Empty', '1976'], 
+['jH34Ju#&', 'Barbara Streisand', '1950'], 
+['tH34Ju#&', 'Jimmy Hendrix', '1972'],
+['eH34Ju#&', 'Joey Tribbiani', '1950'], 
+['bH34Ju#&', 'Steve Black', '1982'], 
+['vH34Ju#&', 'James Brown', '1976'], 
+['kH14Ju#&', 'Evelin Smile', '1950'],
+['kH35Ju#&', 'Kevin Spacey', '1990'], 
+['kH38Ju#&', 'Leonardo DiCaprio', '1999'],
+['kH94Ju#&', 'Joe Dirt', '1986']]
 
 def get_oldest_person(table):
-    """
-    Question: Who is the oldest person?
-
-    Args:
-        table (list): data table to work on
-
-    Returns:
-        list: A list of strings (name or names if there are two more with the same value)
-    """
-
-    # your code
-
+    max_year = 0
+    for line in table:
+        if max_year < int(line[2]):
+            max_year = int(line[2])      
+    return max_year 
+    
+print(get_oldest_person(table))
 
 def get_persons_closest_to_average(table):
     """
     Question: Who is the closest to the average age?
-
     Args:
         table (list): data table to work on
-
     Returns:
         list: list of strings (name or names if there are two more with the same value)
     """
 
-    # your code
