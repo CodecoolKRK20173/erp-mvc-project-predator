@@ -87,11 +87,13 @@ def get_oldest_person(table):
 print(get_oldest_person(table))
 
 def get_persons_closest_to_average(table):
-    """
-    Question: Who is the closest to the average age?
-    Args:
-        table (list): data table to work on
-    Returns:
-        list: list of strings (name or names if there are two more with the same value)
-    """
+    number_of_year = 0   
+    year_sum = 0
+    for line in table:
+        year_sum =year_sum + int(line[2])
+        number_of_year +=1
+    average_year = year_sum/number_of_year    
+    print(int(average_year))
+    #return average_year    
 
+print(get_persons_closest_to_average(table))
