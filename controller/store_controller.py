@@ -19,8 +19,7 @@ def run():
                "Remove a record with a given id from the table",
                "Updates specified record in the table",
                "How many different kinds of game are available of each manufacturer?",
-               "What is the average amount of games in stock of a given manufacturer",
-               "back to main menu"]
+               "What is the average amount of games in stock of a given manufacturer"]
 
     title_list = ["*id",
     "* title",
