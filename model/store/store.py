@@ -41,9 +41,9 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
-    table = table[:int(id_)] + table[int(id_)+1:]
-    # your code
-
+    for a in range(0,len(table)):
+        if id_ == table[a][0]:
+            table = table[:a] + table[a+1:]
     return table
 
 

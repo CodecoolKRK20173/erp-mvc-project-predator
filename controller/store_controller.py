@@ -41,9 +41,14 @@ def run():
             table = store.add(table, record)
             common.write_table_to_file(file_name, table)
         elif choice == "2":
-            file_name = get_input("Choose a file")
+            file_name = common.get_input("Choose a file")
             table = common.get_table_from_file(file_name)
-            store.remove(table, id_)
+            terminal_view.print_table(table, title_list)
+            id_ = common.get_input("get id to removed")
+            table = store.remove(table, id_)
+            common.write_table_to_file(file_name, table)
+            terminal_view.print_table(table, title_list)
+
         elif choice == "3":
             file_name = get_input("Choose a file")
             table = common.get_table_from_file(file_name)
