@@ -1,4 +1,4 @@
-import os
+"""import os
 # User interface module
 import terminal_view
 # data manager module
@@ -166,3 +166,4 @@ def get_subscribed_emails(table):
             continue
     os.system("clear")
     return subs_mail
+"""
