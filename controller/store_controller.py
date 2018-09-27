@@ -48,15 +48,19 @@ def run():
             table = store.remove(table, id_)
             common.write_table_to_file(file_name, table)
             terminal_view.print_table(table, title_list)
-
         elif choice == "3":
-            file_name = get_input("Choose a file")
+            file_name = common.get_input("Choose a file")
             table = common.get_table_from_file(file_name)
-            store.update(table, id_, record)
+            terminal_view.print_table(table, title_list)
+            id_ = common.get_input("Enter id to update")
+            record = terminal_view.get_inputs(title_list, "Enter data")
+            table = store.update(table, id_, record)
+            common.write_table_to_file(file_name, table)
         elif choice == "4":
-            file_name = get_input("Choose a file")
+            file_name = common.get_input("Choose a file")
             table = common.get_table_from_file(file_name)
-            store.get_counts_by_manufacturers(table)
+            dictionary = store.get_counts_by_manufacturers(table)
+            terminal_view.print_dictionary('different kinds of game are available of each manufacturer', dictionary)
         elif choice == "5":
             file_name = get_input("Choose a file")
             table = common.get_table_from_file(file_name)

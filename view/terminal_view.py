@@ -76,6 +76,15 @@ def print_result(result, label=""):
         print("")
 
 
+
+
+def print_dictionary(title, dictionary):
+    print (title + ':')
+    i = 1
+    for key in dictionary:
+        print ('\t' , key , ' :' , dictionary[key])
+        i = i + 1
+
 def print_menu(title, list_options, exit_message):
 
 
@@ -87,19 +96,13 @@ def print_menu(title, list_options, exit_message):
     print ('\t[0] ' + exit_message)
 
 def get_inputs(list_labels, title):
-
-
     inputs = []
-
     print(title)
     for element in list_labels:
         x = input(element)
         inputs.append(x)
-
     return inputs
 
 
 def print_error_message(message):
-
-
     print("\n" + message)
