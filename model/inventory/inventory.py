@@ -10,8 +10,8 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-#from model import data_manager
-#from model import common
+from model import data_manager
+from model import common
 
 
 def add(table, record):
@@ -26,7 +26,7 @@ def add(table, record):
         list: Table with a new record
     """
     table = table + [record]
-    
+
     return table
 
 
@@ -85,8 +85,11 @@ def get_available_items(table):
         year_from_table = int(element[-2])
         durability_from_table = int(element[-1])
         sum_durability = year_from_table + durability_from_table
-        if sum_durability >= 2018:
+        if sum_durability >= 2017:
             available_durability.append(element)
+            for digit in available_durability:
+                digit[-2] = int(digit[-2])
+                digit[-1] = int(digit[-1])
     return available_durability
 
 
