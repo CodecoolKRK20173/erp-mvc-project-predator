@@ -8,8 +8,8 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-#from model import data_manager
-#from model import common
+from model import data_manager
+from model import common
 
 
 
@@ -25,7 +25,7 @@ def add(table, record):
         list: Table with a new record
     """
     
-
+    table = table + [record]
     return table
 
 
@@ -41,7 +41,7 @@ def remove(table, id_):
         list: Table without specified record.
     """
 
-    # your code
+    table = table[:int(id_)] + table[int(id_)+1:]
 
     return table
 
@@ -59,41 +59,55 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    # your code
+    table = table[:int(id_)] + [record] +table[int(id_)+1:]
 
     return table
 
 
 # special functions:
-# ------------------
-table = [['kH34Ju#&', 'Joe Empty', '1976'], 
-['jH34Ju#&', 'Barbara Streisand', '1950'], 
-['tH34Ju#&', 'Jimmy Hendrix', '1972'],
-['eH34Ju#&', 'Joey Tribbiani', '1950'], 
-['bH34Ju#&', 'Steve Black', '1982'], 
-['vH34Ju#&', 'James Brown', '1976'], 
-['kH14Ju#&', 'Evelin Smile', '1950'],
-['kH35Ju#&', 'Kevin Spacey', '1990'], 
-['kH38Ju#&', 'Leonardo DiCaprio', '1999'],
-['kH94Ju#&', 'Joe Dirt', '1986']]
+
+
 
 def get_oldest_person(table):
-    max_year = 0
-    for line in table:
-        if max_year < int(line[2]):
-            max_year = int(line[2])      
-    return max_year 
+    oldest_person_list = []
+    for i,record in enumerate(table):
+        if i == 0 :
+            oldest_age = int(record[2])
+            oldest_name = record[1]
+        current_age = int(record[2])
+        current_name = record[1]
+        if current_age < oldest_age:
+            oldest_age = current_age
+            oldest_name = current_name
+    oldest_person_list = [oldest_name]        
+    for i, record in enumerate(table):
+        current_name = record[1]
+        current_age = int(record[2])
+        if current_age == oldest_age and current_name not in oldest_person_list:
+            oldest_person_list.extend(current_name)       
+    return oldest_person_list
+            
     
-print(get_oldest_person(table))
+
 
 def get_persons_closest_to_average(table):
+    latest_n = 100000
+    nearest_year = 0
+    n = 10000
     number_of_year = 0   
     year_sum = 0
     for line in table:
         year_sum =year_sum + int(line[2])
         number_of_year +=1
-    average_year = year_sum/number_of_year    
-    print(int(average_year))
-    #return average_year    
+        average_year = year_sum/number_of_year
+    for line in table:
+        n = average_year -int(line[2])
+        if n < 0:
+            n = n * (-1)
+        if latest_n > n:
+            latest_n = n
+            nearest_number = int(line[2]) 
+    for line in table:
+        if int(line[2]) == nearest_number:
+            return [line[1]]
 
-print(get_persons_closest_to_average(table))

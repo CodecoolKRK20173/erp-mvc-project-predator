@@ -8,11 +8,11 @@ Data table structure:
     * price (number): Price in dollars
     * in_stock (number)
 """
-'''
+
 # everything you'll need is imported:
 from model import data_manager
 from model import common
-'''
+
 
 def add(table, record):
     """
@@ -41,9 +41,9 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
-    table = table[:int(id_)] + table[int(id_)+1:]
-    # your code
-
+    for a in range(0,len(table)):
+        if id_ == table[a][0]:
+            table = table[:a] + table[a+1:]
     return table
 
 
@@ -59,9 +59,9 @@ def update(table, id_, record):
     Returns:
         list: table with updated record
     """
-    table = table[:int(id_)] + [record] +table[int(id_)+1:]
-    # your code
-
+    for a in range(0,len(table)):
+        if id_ == table[a][0]:
+            table[a] = record
     return table
 
 
