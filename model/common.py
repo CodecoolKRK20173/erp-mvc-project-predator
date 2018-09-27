@@ -53,5 +53,5 @@ def get_table_from_file(file_name):
 
 
 def get_input(title):
-    input = input(title)
-    return input
+    inp = input(title)
+    return inp

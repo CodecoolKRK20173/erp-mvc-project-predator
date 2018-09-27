@@ -1,6 +1,6 @@
 def get_choice(options):
-    pass
-
+    x = input("Enter choosing number")
+    return x
 
 
 def print_table(table, title_list):
