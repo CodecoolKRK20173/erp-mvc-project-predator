@@ -59,8 +59,6 @@ def print_table(table, title_list):
 
 
 def print_result(result, label=""):
-
-
     print("\n" + label)
     if type(result) == list:
         print("")
@@ -86,8 +84,6 @@ def print_dictionary(title, dictionary):
         i = i + 1
 
 def print_menu(title, list_options, exit_message):
-
-
     print (title + ':')
     i = 1
     for element in list_options:

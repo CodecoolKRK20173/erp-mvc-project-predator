@@ -62,9 +62,10 @@ def run():
             dictionary = store.get_counts_by_manufacturers(table)
             terminal_view.print_dictionary('different kinds of game are available of each manufacturer', dictionary)
         elif choice == "5":
-            file_name = get_input("Choose a file")
+            file_name = common.get_input("Choose a file")
             table = common.get_table_from_file(file_name)
-            store.get_average_by_manufacturer(table, manufacturer)
-
+            terminal_view.print_table(table, title_list)
+            manufacturer = common.get_input("enter manufacturer")
+            print(store.get_average_by_manufacturer(table, manufacturer))
         else:
             terminal_view.print_error_message("There is no such choice.")
