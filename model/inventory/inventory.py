@@ -10,8 +10,8 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from model import data_manager
-from model import common
+#from model import data_manager
+#from model import common
 
 
 def add(table, record):
@@ -98,5 +98,28 @@ def get_average_durability_by_manufacturers(table):
     Returns:
         dict: a dictionary with this structure: { [manufacturer] : [avg] }
     """
+    list_of_manufacture_durability = []
+    dict_of_manufacture_sum_durability = {}
 
-    # your code
+    for element in table:
+        manufacturer = element[-3]
+        durability = int(element[-1])
+        if manufacturer not in list_of_manufacture_durability:
+            list_of_manufacture_durability.append([manufacturer, durability])
+            
+    for manufacturer, durability in list_of_manufacture_durability:
+        if manufacturer in dict_of_manufacture_sum_durability:
+            dict_of_manufacture_sum_durability[manufacturer] += durability
+        else:
+            dict_of_manufacture_sum_durability[manufacturer] = durability
+    
+    counter_of_manufacturers = 0
+
+    for manufacturer1 in dict_of_manufacture_sum_durability:
+        for manufacturer2 in list_of_manufacture_durability:
+            if manufacturer1 == manufacturer2[0]:
+                counter_of_manufacturers += 1
+        dict_of_manufacture_sum_durability[manufacturer1] = dict_of_manufacture_sum_durability[manufacturer1] / counter_of_manufacturers
+        counter_of_manufacturers = 0
+    return dict_of_manufacture_sum_durability
+
