@@ -65,17 +65,8 @@ def update(table, id_, record):
 
 
 # special functions:
-# ------------------
-table = [['kH34Ju#&', 'Joe Empty', '1976'], 
-['jH34Ju#&', 'Barbara Streisand', '1950'], 
-['tH34Ju#&', 'Jimmy Hendrix', '1972'],
-['eH34Ju#&', 'Joey Tribbiani', '1950'], 
-['bH34Ju#&', 'Steve Black', '1982'], 
-['vH34Ju#&', 'James Brown', '1976'], 
-['kH14Ju#&', 'Evelin Smile', '1950'],
-['kH35Ju#&', 'Kevin Spacey', '1990'], 
-['kH38Ju#&', 'Leonardo DiCaprio', '1999'],
-['kH94Ju#&', 'Joe Dirt', '1986']]
+
+
 
 def get_oldest_person(table):
     max_year = 0
@@ -84,16 +75,26 @@ def get_oldest_person(table):
             max_year = int(line[2])      
     return max_year 
     
-print(get_oldest_person(table))
+
 
 def get_persons_closest_to_average(table):
+    latest_n = 100000
+    nearest_year = 0
+    n = 10000#n
     number_of_year = 0   
     year_sum = 0
     for line in table:
         year_sum =year_sum + int(line[2])
         number_of_year +=1
-    average_year = year_sum/number_of_year    
-    print(int(average_year))
-    #return average_year    
+        average_year = year_sum/number_of_year
+    for line in table:
+        n = average_year -int(line[2])
+        if n < 0:
+            n = n * (-1)
+        if latest_n > n:
+            latest_n = n
+            nearest_number = int(line[2]) 
+    for line in table:
+        if int(line[2]) == nearest_number:
+            return line[1]
 
-print(get_persons_closest_to_average(table))

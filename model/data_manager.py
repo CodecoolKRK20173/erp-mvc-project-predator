@@ -14,7 +14,6 @@ def get_table_from_file(file_name):
     table = [element.replace("\n", "").split(";") for element in lines]
     return table
 
-print(get_table_from_file("model/hr/persons.csv"))
 
 def write_table_to_file(file_name, table):
     """
