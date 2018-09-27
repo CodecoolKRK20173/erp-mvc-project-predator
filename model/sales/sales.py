@@ -87,7 +87,7 @@ def get_lowest_price_item_id(table):
             lowest_price = i[2]
             item = i[0]
     return item
-
+'''
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
     """
     Question: Which items are sold between two given dates? (from_date < sale_date < to_date)
@@ -133,7 +133,7 @@ sort_abc(table)
 
 
 
-
+'''
 
 
 

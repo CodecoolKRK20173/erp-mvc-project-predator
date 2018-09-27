@@ -1,3 +1,8 @@
+def get_choice(options):
+    pass
+
+
+
 def print_table(table, title_list):
     """
     Prints table with data. Sample output:

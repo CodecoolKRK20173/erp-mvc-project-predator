@@ -8,11 +8,11 @@ Data table structure:
     * price (number): Price in dollars
     * in_stock (number)
 """
-'''
+
 # everything you'll need is imported:
 from model import data_manager
 from model import common
-'''
+
 
 def add(table, record):
     """
