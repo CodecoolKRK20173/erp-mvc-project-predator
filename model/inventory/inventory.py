@@ -25,6 +25,7 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
+    table = table + [record]
 
     return table
 
@@ -41,6 +42,7 @@ def remove(table, id_):
         list: Table without specified record.
     """
 
+    table = table[:int(id_)] + table[int(id_)+1:]
 
     return table
 
@@ -58,7 +60,7 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    # your code
+    table = table[:int(id_)] + [record] +table[int(id_)+1:]
 
     return table
 
@@ -83,8 +85,11 @@ def get_available_items(table):
         year_from_table = int(element[-2])
         durability_from_table = int(element[-1])
         sum_durability = year_from_table + durability_from_table
-        if sum_durability >= 2018:
+        if sum_durability >= 2017:
             available_durability.append(element)
+            for digit in available_durability:
+                digit[-2] = int(digit[-2])
+                digit[-1] = int(digit[-1])
     return available_durability
 
 
@@ -98,5 +103,28 @@ def get_average_durability_by_manufacturers(table):
     Returns:
         dict: a dictionary with this structure: { [manufacturer] : [avg] }
     """
+    list_of_manufacture_durability = []
+    dict_of_manufacture_sum_durability = {}
 
-    # your code
+    for element in table:
+        manufacturer = element[-3]
+        durability = int(element[-1])
+        if manufacturer not in list_of_manufacture_durability:
+            list_of_manufacture_durability.append([manufacturer, durability])
+            
+    for manufacturer, durability in list_of_manufacture_durability:
+        if manufacturer in dict_of_manufacture_sum_durability:
+            dict_of_manufacture_sum_durability[manufacturer] += durability
+        else:
+            dict_of_manufacture_sum_durability[manufacturer] = durability
+    
+    counter_of_manufacturers = 0
+
+    for manufacturer1 in dict_of_manufacture_sum_durability:
+        for manufacturer2 in list_of_manufacture_durability:
+            if manufacturer1 == manufacturer2[0]:
+                counter_of_manufacturers += 1
+        dict_of_manufacture_sum_durability[manufacturer1] = dict_of_manufacture_sum_durability[manufacturer1] / counter_of_manufacturers
+        counter_of_manufacturers = 0
+    return dict_of_manufacture_sum_durability
+
