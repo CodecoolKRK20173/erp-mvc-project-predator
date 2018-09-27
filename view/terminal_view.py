@@ -86,7 +86,6 @@ def print_menu(title, list_options, exit_message):
         i += 1
     print ('\t[0] ' + exit_message)
 
-
 def get_inputs(list_labels, title):
 
 
