@@ -59,9 +59,9 @@ def update(table, id_, record):
     Returns:
         list: table with updated record
     """
-    table = table[:int(id_)] + [record] +table[int(id_)+1:]
-    # your code
-
+    for a in range(0,len(table)):
+        if id_ == table[a][0]:
+            table[a] = record
     return table
 
 
