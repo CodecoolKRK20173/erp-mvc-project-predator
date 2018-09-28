@@ -20,7 +20,7 @@ def run():
     os.system("clear")
     choice = None
     while choice != "0":
-        terminal_view.print_menu("How controler do you like to open:",options,"Exit")
+        terminal_view.print_menu("What controller would you like to open:",options,"Exit")
         choice = terminal_view.get_choice(options)
         os.system("clear")
         if choice == "1":
