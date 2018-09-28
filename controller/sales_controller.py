@@ -22,9 +22,9 @@ def run():
 
     options = ["Add new record to table",
                "Remove a record with a given id from the table",
-               "Updates specified record in the table",
-               "What is the id of the item that was sold for the lowest price?",
-               "Which items are sold between two given dates?",
+               "Update specified record in the table",
+               "ID of the item that was sold for the lowest price",
+               "Items that are sold between two given dates",
                "Print table"]
     os.system('clear')
     file = "model/sales/sales.csv"
