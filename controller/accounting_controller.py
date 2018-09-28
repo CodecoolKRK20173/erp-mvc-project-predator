@@ -23,18 +23,18 @@ def run():
         None
     """
 
-    title_list = ["* id",
+    title_list = ["* ID",
     "* Month of the transaction",
     "* Day of the transaction",
     "* Year of the transaction",
-    "* type",
-    "* amount"]
+    "* Type",
+    "* Amount in USD"]
 
     options = ["Add new record to table",
                "Remove a record with a given id from the table",
-               "Updates specified record in the table",
-               "Question: Which year has the highest profit?",
-               "Question: What is the average (per item) profit in a given year?",
+               "Update specified record in the table",
+               "Year of the highest profit",
+               "Average profit in a given year",
                "Print table"]
     os.system('clear')
     file = "model/accounting/items.csv"
@@ -49,9 +49,25 @@ def run():
         elif choice == "3":
             common.all_updates(title_list,file)
         elif choice == "4":
-            pass
+            file_name = common.get_input("Choose a file: ")
+            if file_name == "":
+                file_name = file
+            table = common.get_table_from_file(file_name)
+            year_of_highest_profit = accounting.which_year_max(table)
+            os.system("clear")
+            print("Year of the highest profit:", year_of_highest_profit)
+            common.waiting()
+            os.system("clear")
         elif choice == "5":
-            pass
+            file_name = common.get_input("Choose a file: ")
+            if file_name == "":
+                file_name = file
+            table = common.get_table_from_file(file_name)
+            terminal_view.print_table(table, title_list)
+            year = int(common.get_input("Enter year: "))
+            print(accounting.avg_amount(table, year))
+            common.waiting()
+            os.system("clear")
         elif choice == "6":
             common.all_print_table(title_list,file)
         else:
