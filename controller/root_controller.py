@@ -9,6 +9,7 @@ from controller import crm_controller
 from controller import common
 import os
 
+
 def run():
     options = ["Store manager",
                "Human resources manager",
@@ -18,6 +19,7 @@ def run():
                "Customer Relationship Management (CRM)"]
 
     os.system("clear")
+    print_predator()
     choice = None
     while choice != "0":
         terminal_view.print_menu("What controller would you like to open:",options,"Exit")
