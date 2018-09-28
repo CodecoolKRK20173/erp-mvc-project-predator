@@ -52,5 +52,7 @@ def run():
             pass
         elif choice == "6":
             common.all_print_table(title_list,file)
+
         else:
-            terminal_view.print_error_message("There is no such choice.")
+            if choice != "0":
+                terminal_view.print_error_message("There is no such choice.")

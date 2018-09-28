@@ -51,6 +51,8 @@ Uruchamia ten moduł i wyświetla jego menu.
             file_name = input("Choose a file")
             table = common.get_table_from_file(file_name)
             hr.get_persons_closest_to_average(table)
+
         else:
-            terminal_view.print_error_message("There is no such choice")        
+            if choice != "0":
+                terminal_view.print_error_message("There is no such choice.")        
 
