@@ -72,7 +72,7 @@ def all_add(title_list,file):
     table = add(table, record)
     write_table_to_file(file_name, table)
     os.system("clear")
-    terminal_view.gprint('*** Record is added ***')
+    terminal_view.gprint('*** Record has been added ***')
     waiting()
     os.system("clear")
 
@@ -82,11 +82,11 @@ def all_remove(title_list,file):
         file_name = file
     table = get_table_from_file(file_name)
     terminal_view.print_table(table, title_list)
-    id_ = get_input("Get id to removed: ")
+    id_ = get_input("Enter id of a record you want to remove: ")
     table = remove(table, id_)
     write_table_to_file(file_name, table)
     os.system("clear")
-    terminal_view.gprint('*** Record is removed ***')
+    terminal_view.gprint('*** Record has been removed ***')
     waiting()
     os.system("clear")
 
@@ -101,7 +101,7 @@ def all_updates(title_list,file):
     table = update(table, id_, record)
     write_table_to_file(file_name, table)
     os.system("clear")
-    terminal_view.gprint('*** Record is updated ***')
+    terminal_view.gprint('*** Record has been updated ***')
     waiting()
     os.system("clear")
 
