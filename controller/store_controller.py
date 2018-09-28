@@ -102,4 +102,5 @@ def run():
             os.system("clear")
 
         else:
-            terminal_view.print_error_message("There is no such choice.")
+            if choice != "0":
+                terminal_view.print_error_message("There is no such choice.")
