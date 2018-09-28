@@ -16,9 +16,9 @@ def run():
 
     options = ["Add new record to table",
                "Remove a record with a given id from the table",
-               "Updates specified record in the table",
-               "How many different kinds of game are available of each manufacturer?",
-               "What is the average amount of games in stock of a given manufacturer",
+               "Update specified record in the table",
+               "Number of different kinds of game that are available of each manufacturer",
+               "Average amount of games in stock of a given manufacturer,
                "Print table"]
 
     title_list = ["*id",
@@ -43,7 +43,7 @@ def run():
             table = store.add(table, record)
             common.write_table_to_file(file_name, table)
             os.system("clear")
-            terminal_view.gprint('*** Record is added ***')
+            terminal_view.gprint('*** Record has been added ***')
             common.waiting()
             os.system("clear")
         elif choice == "2":
@@ -56,7 +56,7 @@ def run():
             table = store.remove(table, id_)
             common.write_table_to_file(file_name, table)
             os.system("clear")
-            terminal_view.gprint('*** Record is removed ***')
+            terminal_view.gprint('*** Record has been removed ***')
             common.waiting()
             os.system("clear")
         elif choice == "3":
@@ -70,7 +70,7 @@ def run():
             table = store.update(table, id_, record)
             common.write_table_to_file(file_name, table)
             os.system("clear")
-            terminal_view.gprint('*** Record is updated ***')
+            terminal_view.gprint('*** Record has been updated ***')
             common.waiting()
             os.system("clear")
         elif choice == "4":
@@ -79,7 +79,7 @@ def run():
                 file_name = "model/store/games.csv"
             table = common.get_table_from_file(file_name)
             dictionary = store.get_counts_by_manufacturers(table)
-            terminal_view.print_dictionary('different kinds of game are available of each manufacturer', dictionary)
+            terminal_view.print_dictionary("Number of different kinds of game that are available of each manufacturer:", dictionary)
             common.waiting()
             os.system("clear")
         elif choice == "5":
@@ -88,7 +88,7 @@ def run():
                 file_name = "model/store/games.csv"
             table = common.get_table_from_file(file_name)
             terminal_view.print_table(table, title_list)
-            manufacturer = common.get_input("Enter manufacturer: ")
+            manufacturer = common.get_input("Enter a manufacturer: ")
             print(store.get_average_by_manufacturer(table, manufacturer))
             common.waiting()
             os.system("clear")
