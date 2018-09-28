@@ -39,7 +39,15 @@ def run():
         elif choice == "3":
             common.all_updates(title_list,file)
         elif choice == "4":
-            pass
+            file_name = common.get_input("Choose a file: ")
+            if file_name == "":
+                file_name = file
+            table = common.get_table_from_file(file_name)
+            item_the_lowest_price = sales.get_lowest_price_item_id(table)
+            os.system("clear")
+            print("id of the item that was sold for the lowest price: " , item_the_lowest_price)
+            common.waiting()
+            os.system("clear")
         elif choice == "5":
             pass
         elif choice == "6":
