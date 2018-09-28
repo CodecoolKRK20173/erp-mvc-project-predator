@@ -25,7 +25,8 @@ def write_table_to_file(file_name, table):
 
 
 
-
+def waiting():
+    input()
 
 def get_table_from_file(file_name):
     """
@@ -38,7 +39,6 @@ def get_table_from_file(file_name):
     Returns:
          list: List of lists read from a file.
     """
-    print(os.system('ls'))
     with open(file_name, "r") as file:
         lines = file.readlines()
     table = [element.replace("\n", "").split(";") for element in lines]

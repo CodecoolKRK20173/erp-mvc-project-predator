@@ -1,7 +1,9 @@
 def get_choice(options):
-    x = input("Enter choosing number")
+    x = input("Enter choosing number:  ")
     return x
 
+def gprint(a):
+    print(a)
 
 def print_table(table, title_list):
     """
@@ -95,7 +97,7 @@ def get_inputs(list_labels, title):
     inputs = []
     print(title)
     for element in list_labels:
-        x = input(element)
+        x = input(element + ": ")
         inputs.append(x)
     return inputs
 
