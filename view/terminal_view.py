@@ -1,9 +1,11 @@
 def get_choice(options):
-    x = input("Enter choosing number:  ")
+    x = input("Enter a number:  ")
     return x
+
 
 def gprint(a):
     print(a)
+
 
 def print_table(table, title_list):
     """
@@ -74,8 +76,6 @@ def print_result(result, label=""):
     else:
         print(result)
         print("")
-
-
 
 
 def print_dictionary(title, dictionary):
