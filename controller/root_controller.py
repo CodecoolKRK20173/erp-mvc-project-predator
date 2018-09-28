@@ -1,5 +1,5 @@
 # everything you'll need is imported:
-from view import* 
+from view import terminal_view
 from controller import store_controller
 from controller import hr_controller
 from controller import inventory_controller
@@ -8,7 +8,6 @@ from controller import sales_controller
 from controller import crm_controller
 from controller import common
 import os
-
 
 def run():
     options = ["Store manager",
@@ -19,7 +18,7 @@ def run():
                "Customer Relationship Management (CRM)"]
 
     os.system("clear")
-    print_predator()
+    terminal_view.print_predator()
     choice = None
     while choice != "0":
         terminal_view.print_menu("What controller would you like to open:",options,"Exit")
