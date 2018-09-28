@@ -96,28 +96,24 @@ def which_year_max(table):
             if outflow == "out" not in list_with_outflow:
                 list_with_outflow.append([year, amount])
 
-        for year, income in list_with_income:
-            year = int(element[-3])
-            income = int(element[-1])
-            sum_of_income = dict_years_income.get(year, 0) + income
-            dict_years_income[year] = sum_of_income
+    for year, income in list_with_income:
+        sum_of_income = dict_years_income.get(year, 0) + income
+        dict_years_income[year] = sum_of_income
 
-        for year, outflow in list_with_income:
-            year = int(element[-3])
-            outflow = int(element[-1])
-            sum_of_outflow = dict_years_income.get(year, 0) + outflow
-            dict_years_outflow[year] = sum_of_outflow
+    for year, outflow in list_with_outflow:
+        sum_of_outflow = dict_years_outflow.get(year, 0) + outflow
+        dict_years_outflow[year] = sum_of_outflow
 
         for year, amount in dict_years_income.items():
             dict_profit[year] = amount - dict_years_outflow.get(year, 0)
 
-        year_highest_profit = 0  # -float("inf")
-        for year in dict_profit:
-            if year_highest_profit > dict_profit[year]:  # <
-                year_highest_profit = dict_profit[year]
-                year_highest_profit = year
-    
-    return year_highest_profit
+        year_highest_profit = 0
+        for year, profit in dict_profit.items():
+            if year_highest_profit < profit:
+                year_highest_profit = profit
+                year_highest_profit_key = year
+
+    return year_highest_profit_key
 
 
 def avg_amount(table, year):
@@ -132,4 +128,39 @@ def avg_amount(table, year):
         number
     """
 
-    # your code
+    list_with_income = []
+    list_with_outflow = []
+    dict_years_income = {}
+    dict_years_outflow = {}
+    dict_profit = {}
+
+    for element in table:
+        year0 = int(element[-3])
+        amount = int(element[-1])
+        for income in element:
+            if income == "in" not in list_with_income:
+                list_with_income.append([year0, amount])
+        for outflow in element:
+            if outflow == "out" not in list_with_outflow:
+                list_with_outflow.append([year0, amount])
+
+    for year0, income in list_with_income:
+        sum_of_income = dict_years_income.get(year0, 0) + income
+        dict_years_income[year0] = sum_of_income
+
+    for year0, outflow in list_with_outflow:
+        sum_of_outflow = dict_years_outflow.get(year0, 0) + outflow
+        dict_years_outflow[year0] = sum_of_outflow
+
+        for year0, amount in dict_years_income.items():
+            dict_profit[year0] = amount - dict_years_outflow.get(year0, 0)
+
+    counter_of_items = 0
+    for year1 in dict_profit:
+        for year2 in table:
+            if year1 == int(year2[-3]):
+                counter_of_items += 1
+        dict_profit[year1] = dict_profit[year1] / counter_of_items
+        counter_of_items = 0
+
+    return dict_profit[year]
