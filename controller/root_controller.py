@@ -1,5 +1,5 @@
 # everything you'll need is imported:
-from view import terminal_view
+from view import* 
 from controller import store_controller
 from controller import hr_controller
 from controller import inventory_controller
