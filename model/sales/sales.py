@@ -83,8 +83,8 @@ def get_lowest_price_item_id(table):
     lowest_price = 10000000
     item = ''
     for i in table:
-        if i[2] < lowest_price:
-            lowest_price = i[2]
+        if int(i[2]) < lowest_price:
+            lowest_price = int(i[2])
             item = i[0]
     return item
 '''

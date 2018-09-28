@@ -44,7 +44,7 @@ def remove(table, id_):
     for a in range(0,len(table)):
         if id_ == table[a][0]:
             table = table[:a] + table[a+1:]
-    return table
+            return table
 
 
 def update(table, id_, record):

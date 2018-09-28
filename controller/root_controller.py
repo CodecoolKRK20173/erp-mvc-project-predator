@@ -7,7 +7,7 @@ from controller import accounting_controller
 from controller import sales_controller
 from controller import crm_controller
 from controller import common
-
+import os
 
 def run():
     options = ["Store manager",
@@ -17,10 +17,12 @@ def run():
                "Sales manager",
                "Customer Relationship Management (CRM)"]
 
+    os.system("clear")
     choice = None
     while choice != "0":
         terminal_view.print_menu("How controler do you like to open:",options,"Exit")
         choice = terminal_view.get_choice(options)
+        os.system("clear")
         if choice == "1":
             store_controller.run()
         elif choice == "2":
