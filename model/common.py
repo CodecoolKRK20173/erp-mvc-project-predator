@@ -24,16 +24,6 @@ def generate_random(table):
     return generated
 
 
-
-
-
-
-
-
-
-
-
-
 def get_table_from_file(file_name):
     """
     Reads csv file and returns it as a list of lists.
@@ -49,7 +39,6 @@ def get_table_from_file(file_name):
         lines = file.readlines()
     table = [element.replace("\n", "").split(";") for element in lines]
     return table
-
 
 
 def get_input(title):

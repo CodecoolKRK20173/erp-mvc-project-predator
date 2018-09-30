@@ -1,6 +1,7 @@
 from model import data_manager
 from model import common
 
+
 def add(table, record):
     """
     Add new record to table
@@ -13,6 +14,7 @@ def add(table, record):
     table = table + [record]
 
     return table
+
 
 def remove(table, id_):
     """
@@ -29,7 +31,6 @@ def remove(table, id_):
     return table
 
 
-
 def update(table, id_, record):
     """
     Updates specified record in the table.
@@ -43,7 +44,7 @@ def update(table, id_, record):
 
     # your code
 
-    table = table[:int(id_)] + [record] +table[int(id_)+1:]
+    table = table[:int(id_)] + [record] + table[int(id_)+1:]
 
     return table
 
@@ -61,7 +62,6 @@ def get_longest_name_id(table):
         if len(item[1]) == longest_name_number_of_id:
             longest.append([item[0], item[1]])
     first = min(longest, key=lambda x: x[1])[0]
-    #ui.print_result(first, "ID of the person with the longest name?")
     return first
 
 
@@ -74,5 +74,4 @@ def get_subscribed_emails(table):
     for line in table:
         if line[3] == "1":
             name_of_subscribers.extend([line[2] + ";" + line[1]])
-    #terminal_view.print_result(name_of_subscribers, "subscribers:")
     return name_of_subscribers

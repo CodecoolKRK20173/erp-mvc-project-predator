@@ -60,7 +60,7 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    table = table[:int(id_)] + [record] +table[int(id_)+1:]
+    table = table[:int(id_)] + [record] + table[int(id_)+1:]
 
     return table
 
@@ -78,7 +78,7 @@ def get_available_items(table):
     Returns:
         list: list of lists (the inner list contains the whole row with their actual data types)
     """
-    
+
     available_durability = []
     all_data_with_available_durability = []
     for element in table:
@@ -111,13 +111,13 @@ def get_average_durability_by_manufacturers(table):
         durability = int(element[-1])
         if manufacturer not in list_of_manufacture_durability:
             list_of_manufacture_durability.append([manufacturer, durability])
-            
+
     for manufacturer, durability in list_of_manufacture_durability:
         if manufacturer in dict_of_manufacture_sum_durability:
             dict_of_manufacture_sum_durability[manufacturer] += durability
         else:
             dict_of_manufacture_sum_durability[manufacturer] = durability
-    
+
     counter_of_manufacturers = 0
 
     for manufacturer1 in dict_of_manufacture_sum_durability:
@@ -127,4 +127,3 @@ def get_average_durability_by_manufacturers(table):
         dict_of_manufacture_sum_durability[manufacturer1] = dict_of_manufacture_sum_durability[manufacturer1] / counter_of_manufacturers
         counter_of_manufacturers = 0
     return dict_of_manufacture_sum_durability
-

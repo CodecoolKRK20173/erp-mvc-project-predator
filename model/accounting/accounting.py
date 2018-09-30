@@ -15,7 +15,6 @@ from model import data_manager
 from model import common
 
 
-
 def add(table, record):
     """
     Add new record to table
@@ -62,7 +61,7 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    table = table[:int(id_)] + [record] +table[int(id_)+1:]
+    table = table[:int(id_)] + [record] + table[int(id_)+1:]
 
     return table
 

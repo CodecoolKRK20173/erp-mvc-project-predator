@@ -3,6 +3,7 @@ from view import terminal_view
 from model.hr import hr
 from controller import common
 
+
 def run():
     """
 Uruchamia ten moduł i wyświetla jego menu.
@@ -14,15 +15,15 @@ Uruchamia ten moduł i wyświetla jego menu.
     """
 
     options = ["Add new record to table",
-                "Remove a record",
-                "Update a record",
-                "Get oldest person in file",
-                "Get closest person to average year in file"]
-                
-    title_list = ["*id","person", "year"]
+               "Remove a record",
+               "Update a record",
+               "Get oldest person in file",
+               "Get closest person to average year in file"]
+
+    title_list = ["*id", "person", "year"]
     choice = None
     while choice != "0":
-        terminal_view.print_menu("What do you want to do:",options,"Back to main menu")
+        terminal_view.print_menu("What do you want to do:", options, "Back to main menu")
         choice = terminal_view.get_choice(options)
         if choice == "1":
             file_name = input("Choose a file")
@@ -40,7 +41,7 @@ Uruchamia ten moduł i wyświetla jego menu.
             common.write_table_to_file(file_name, table)
             terminal_view.print_table(table, title_list)
         elif choice == "3":
-            file_name = input("Choose a file") 
+            file_name = input("Choose a file")
             table = common.get_table_from_file(file_name)
             hr.update(table, id_, record)
         elif choice == "4":
@@ -54,5 +55,4 @@ Uruchamia ten moduł i wyświetla jego menu.
 
         else:
             if choice != "0":
-                terminal_view.print_error_message("There is no such choice.")        
-
+                terminal_view.print_error_message("There is no such choice.")

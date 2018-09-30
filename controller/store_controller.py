@@ -4,6 +4,7 @@ from view import terminal_view
 from controller import common
 import os
 
+
 def run():
     """
     Starts this module and displays its menu.
@@ -22,18 +23,18 @@ def run():
                "Print table"]
 
     title_list = ["*id",
-    "* title",
-    "* manufacturer",
-    "* price",
-    "* in_stock"]
+                  "* title",
+                  "* manufacturer",
+                  "* price",
+                  "* in_stock"]
     os.system('clear')
     choice = None
     while choice != "0":
-        terminal_view.print_menu("What do you want to do:",options,"Back to main menu")
+        terminal_view.print_menu("What do you want to do:", options, "Back to main menu")
         choice = terminal_view.get_choice(options)
         os.system('clear')
         if choice == "1":
-        #   to jest dzialajacy plik               model/store/games.csv
+            # to jest dzialajacy plik               model/store/games.csv
             file_name = common.get_input("Choose a file: ")
             if file_name == "":
                 file_name = "model/store/games.csv"
@@ -79,7 +80,8 @@ def run():
                 file_name = "model/store/games.csv"
             table = common.get_table_from_file(file_name)
             dictionary = store.get_counts_by_manufacturers(table)
-            terminal_view.print_dictionary("Number of different kinds of game that are available of each manufacturer:", dictionary)
+            terminal_view.print_dictionary("Number of different kinds of game that are" +
+                                           "available of each manufacturer:", dictionary)
             common.waiting()
             os.system("clear")
         elif choice == "5":

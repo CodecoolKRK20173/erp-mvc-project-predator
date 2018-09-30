@@ -3,6 +3,8 @@ implement commonly used functions here
 """
 import os
 from view import terminal_view
+
+
 def add(table, record):
     """
     Add new record to table
@@ -30,7 +32,7 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
-    for a in range(0,len(table)):
+    for a in range(0, len(table)):
         if id_ == table[a][0]:
             table = table[:a] + table[a+1:]
             return table
@@ -48,12 +50,13 @@ def update(table, id_, record):
     Returns:
         list: table with updated record
     """
-    for a in range(0,len(table)):
+    for a in range(0, len(table)):
         if id_ == table[a][0]:
             table[a] = record
     return table
 
-def all_print_table(title_list,file):
+
+def all_print_table(title_list, file):
     file_name = get_input("Choose a file: ")
     if file_name == "":
         file_name = file
@@ -62,7 +65,8 @@ def all_print_table(title_list,file):
     waiting()
     os.system("clear")
 
-def all_add(title_list,file):
+
+def all_add(title_list, file):
     file_name = get_input("Choose a file: ")
     if file_name == "":
         file_name = file
@@ -76,7 +80,8 @@ def all_add(title_list,file):
     waiting()
     os.system("clear")
 
-def all_remove(title_list,file):
+
+def all_remove(title_list, file):
     file_name = get_input("Choose a file: ")
     if file_name == "":
         file_name = file
@@ -90,7 +95,8 @@ def all_remove(title_list,file):
     waiting()
     os.system("clear")
 
-def all_updates(title_list,file):
+
+def all_updates(title_list, file):
     file_name = get_input("Choose a file: ")
     if file_name == "":
         file_name = file
@@ -104,10 +110,6 @@ def all_updates(title_list,file):
     terminal_view.gprint('*** Record has been updated ***')
     waiting()
     os.system("clear")
-
-
-
-
 
 
 def write_table_to_file(file_name, table):
@@ -127,10 +129,9 @@ def write_table_to_file(file_name, table):
             file.write(row + "\n")
 
 
-
-
 def waiting():
     input()
+
 
 def get_table_from_file(file_name):
     """
@@ -147,7 +148,6 @@ def get_table_from_file(file_name):
         lines = file.readlines()
     table = [element.replace("\n", "").split(";") for element in lines]
     return table
-
 
 
 def get_input(title):

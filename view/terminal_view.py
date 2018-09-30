@@ -79,19 +79,21 @@ def print_result(result, label=""):
 
 
 def print_dictionary(title, dictionary):
-    print (title + ':')
+    print(title + ':')
     i = 1
     for key in dictionary:
-        print ('\t' , key , ' :' , dictionary[key])
+        print('\t', key, ' :', dictionary[key])
         i = i + 1
 
+
 def print_menu(title, list_options, exit_message):
-    print (title + ':')
+    print(title + ':')
     i = 1
     for element in list_options:
-        print ('\t' + str([i]) + ' ' + element)
+        print('\t' + str([i]) + ' ' + element)
         i += 1
-    print ('\t[0] ' + exit_message)
+    print('\t[0] ' + exit_message)
+
 
 def get_inputs(list_labels, title):
     inputs = []
@@ -104,20 +106,20 @@ def get_inputs(list_labels, title):
 
 def print_error_message(message):
     print("\n" + message)
-    
-    
+
+
 def print_predator():
-    print ('''
-                            888        888                   
-                            888        888                   
-                            888        888                   
-88888b. 888d888 .d88b.  .d88888 8888b. 888888 .d88b. 888d888 
-888 "88b888P"  d8P  Y8bd88" 888    "88b888   d88""88b888P"   
-888  888888    88888888888  888.d888888888   888  888888     
-888 d88P888    Y8b.    Y88b 888888  888Y88b. Y88..88P888     
-88888P" 888     "Y8888  "Y88888"Y888888 "Y888 "Y88P" 888     
-888                                                          
-888                                                          
-888                                                          
+    print('''
+                            888        888
+                            888        888
+                            888        888
+88888b. 888d888 .d88b.  .d88888 8888b. 888888 .d88b. 888d888
+888 "88b888P"  d8P  Y8bd88" 888    "88b888   d88""88b888P"
+888  888888    88888888888  888.d888888888   888  888888
+888 d88P888    Y8b.    Y88b 888888  888Y88b. Y88..88P888
+88888P" 888     "Y8888  "Y88888"Y888888 "Y888 "Y88P" 888
+888
+888
+888
 
 ''')

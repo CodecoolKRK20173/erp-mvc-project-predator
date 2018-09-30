@@ -233,7 +233,6 @@ class InventoryTester(unittest.TestCase):
         self.assertEqual(result, expected)
 
 
-
 def main():
     unittest.main()
 

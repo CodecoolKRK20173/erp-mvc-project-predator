@@ -26,8 +26,7 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    # your code
-
+    table = table + [record]
     return table
 
 
@@ -43,9 +42,10 @@ def remove(table, id_):
         list: Table without specified record.
     """
 
-    # your code
-
-    return table
+    for a in range(0, len(table)):
+        if id_ == table[a][0]:
+            table = table[:a] + table[a+1:]
+            return table
 
 
 def update(table, id_, record):
@@ -61,8 +61,9 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    # your code
-
+    for a in range(0, len(table)):
+        if id_ == table[a][0]:
+            table[a] = record
     return table
 
 
@@ -134,37 +135,6 @@ sort_abc(table)
 
 
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def change_sign_to_number(sign):
@@ -241,8 +211,10 @@ def change_sign_to_number(sign):
     else:
         sign = 35
     return sign
-def comparison(word_1,word_2):   # jesli false to slowa sa ulozone w porzadku alfabetycznym
-    if_change = False               #jesli true trzeba zamienic
+
+
+def comparison(word_1, word_2):   # jesli false to slowa sa ulozone w porzadku alfabetycznym
+    if_change = False               # jesli true trzeba zamienic
     n = 0
 
     try:
@@ -258,19 +230,22 @@ def comparison(word_1,word_2):   # jesli false to slowa sa ulozone w porzadku al
     if nr_2 < nr_1:
         if_change = True
     return if_change
+
+
 def do_line_string(table):
     new_table = []
     for i in table:
         new_table = new_table + [i[0]+'\t'+i[1]+'\t'+i[2]+'\t'+i[3]+'\t'+i[4]]
     return new_table
 
+
 def sort_abc(table):
     new_table = []
     for k in table:
         new_table = new_table + [k[0] + [k[1].lower()] + k[2:]]
-    for i in range(0,len(new_table)-1):
-        for w in range(i+1,len(new_table)):
-            if comparison(new_table[i][1],new_table[w][1]):
+    for i in range(0, len(new_table)-1):
+        for w in range(i+1, len(new_table)):
+            if comparison(new_table[i][1], new_table[w][1]):
                 t = table[i]
                 table[i] = table[w]
                 table[w] = t
