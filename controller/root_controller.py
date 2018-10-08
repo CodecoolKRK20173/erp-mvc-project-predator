@@ -7,7 +7,7 @@ from controller import accounting_controller
 from controller import sales_controller
 from controller import crm_controller
 from controller import common
-from data_analyser import data_analyser # from controller!!!!!!!!
+#from data_analyser import data_analyser # from controller!!!!!!!!
 import os
 
 

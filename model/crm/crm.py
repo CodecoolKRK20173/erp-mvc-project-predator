@@ -75,3 +75,20 @@ def get_subscribed_emails(table):
         if line[3] == "1":
             name_of_subscribers.extend([line[2] + ";" + line[1]])
     return name_of_subscribers
+
+
+# functions supports data analyser
+# --------------------------------
+
+
+def get_name_by_id_from_table(table, id):
+    """
+    Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
+    Args:
+        table (list of lists): the customer table
+        id (str): the id of the customer
+    Returns:
+        str: the name of the customer
+    """
+
+    # your code
