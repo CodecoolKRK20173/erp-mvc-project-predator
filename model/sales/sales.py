@@ -89,7 +89,7 @@ def get_lowest_price_item_id(table):
             lowest_price = int(i[2])
             item = i[0]
     return item
-'''
+
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
     """
     Question: Which items are sold between two given dates? (from_date < sale_date < to_date)
@@ -106,154 +106,223 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     Returns:
         list: list of lists (the filtered table)
     """
-
-    record_between_year = []
-    for i in table:
-        if i[5] >= year_from and i[5] <= year_to:
-            record_between_year += [i]
-    record_between_month = []
-    for i in table:
-        if i[4] >= month_from and i[4] <= month_to:
-            record_between_month += [i]
-    record_between_days = []
-    for i in table:
-        if i[3] >= day_from and i[3] <= day_to:
-            record_between_days += [i]
-
-    for i in range(0, len(record_between_days) - 1):
-        for j in range(i + 1, len(record_between_days)):
-            if record_between_days[i] > record_between_days[j]:
-                temp = record_between_days[i]
-                record_between_days[i] = record_between_days[j]
-                record_between_days[j] = temp
-    print(record_between_days)
+    pass
 
 
-
-return list
-sort_abc(table)
-
+# functions supports data abalyser
+# --------------------------------
 
 
-'''
+def get_title_by_id(id):
+
+    """
+    Reads the table with the help of the data_manager module.
+    Returns the title (str) of the item with the given id (str) on None om case of non-existing id.
+
+    Args:
+        id (str): the id of the item
+
+    Returns:
+        str: the title of the item
+    """
+
+    # your code
 
 
-def change_sign_to_number(sign):
-    if sign == '1':
-        sign = 1
-    elif sign == '2':
-        sign = 2
-    elif sign == '3':
-        sign = 3
-    elif sign == '4':
-        sign = 4
-    elif sign == '5':
-        sign = 5
-    elif sign == '6':
-        sign = 6
-    elif sign == '7':
-        sign = 7
-    elif sign == '8':
-        sign = 8
-    elif sign == '9':
-        sign = 9
-    elif sign == '0':
-        sign = 0
-    elif sign == 'a':
-        sign = 10
-    elif sign == 'b':
-        sign = 11
-    elif sign == 'c':
-        sign = 12
-    elif sign == 'd':
-        sign = 13
-    elif sign == 'e':
-        sign = 14
-    elif sign == 'f':
-        sign = 15
-    elif sign == 'g':
-        sign = 16
-    elif sign == 'h':
-        sign = 17
-    elif sign == 'i':
-        sign = 18
-    elif sign == 'j':
-        sign = 19
-    elif sign == 'k':
-        sign = 20
-    elif sign == 'l':
-        sign = 21
-    elif sign == 'm':
-        sign = 22
-    elif sign == 'n':
-        sign = 23
-    elif sign == 'o':
-        sign = 24
-    elif sign == 'p':
-        sign = 25
-    elif sign == 'q':
-        sign = 26
-    elif sign == 'r':
-        sign = 27
-    elif sign == 's':
-        sign = 28
-    elif sign == 't':
-        sign = 29
-    elif sign == 'u':
-        sign = 30
-    elif sign == 'w':
-        sign = 31
-    elif sign == 'x':
-        sign = 32
-    elif sign == 'y':
-        sign = 33
-    elif sign == 'z':
-        sign = 34
-    else:
-        sign = 35
-    return sign
+def get_title_by_id_from_table(table, id):
+
+    """
+    Returns the title (str) of the item with the given id (str) on None om case of non-existing id.
+
+    Args:
+        table (list of lists): the sales table
+        id (str): the id of the item
+
+    Returns:
+        str: the title of the item
+    """
+
+    # your code
 
 
-def comparison(word_1, word_2):   # jesli false to slowa sa ulozone w porzadku alfabetycznym
-    if_change = False               # jesli true trzeba zamienic
-    n = 0
+def get_item_id_sold_last():
+    """
+    Reads the table with the help of the data_manager module.
+    Returns the _id_ of the item that was sold most recently.
 
-    try:
-        while word_1[n] == word_2[n]:
-            n = n + 1
-    except:
-        if len(word_1) < len(word_2):
-            return False
-        else:
-            return True
-    nr_1 = change_sign_to_number(word_1[n])
-    nr_2 = change_sign_to_number(word_2[n])
-    if nr_2 < nr_1:
-        if_change = True
-    return if_change
+    Returns:
+        str: the _id_ of the item that was sold most recently.
+    """
+
+    # your code
 
 
-def do_line_string(table):
-    new_table = []
-    for i in table:
-        new_table = new_table + [i[0]+'\t'+i[1]+'\t'+i[2]+'\t'+i[3]+'\t'+i[4]]
-    return new_table
+def get_item_id_sold_last_from_table(table):
+    """
+    Returns the _id_ of the item that was sold most recently.
+
+    Args:
+        table (list of lists): the sales table
+
+    Returns:
+        str: the _id_ of the item that was sold most recently.
+    """
+
+    # your code
 
 
-def sort_abc(table):
-    new_table = []
-    for k in table:
-        new_table = new_table + [k[0] + [k[1].lower()] + k[2:]]
-    for i in range(0, len(new_table)-1):
-        for w in range(i+1, len(new_table)):
-            if comparison(new_table[i][1], new_table[w][1]):
-                t = table[i]
-                table[i] = table[w]
-                table[w] = t
-                t = new_table[i]
-                new_table[i] = new_table[w]
-                new_table[w] = t
-#    new_table = []
-#    for k in table:
-#        new_table = new_table + [k[1]]
-    return table
+def get_item_title_sold_last_from_table(table):
+    """
+    Returns the _title_ of the item that was sold most recently.
+
+    Args:
+        table (list of lists): the sales table
+
+    Returns:
+        str: the _title_ of the item that was sold most recently.
+    """
+
+    # your code
+
+
+def get_the_sum_of_prices(item_ids):
+    """
+    Reads the table of sales with the help of the data_manager module.
+    Returns the sum of the prices of the items in the item_ids.
+
+    Args:
+        item_ids (list of str): the ids
+
+    Returns:
+        number: the sum of the items' prices
+    """
+
+    # your code
+
+
+def get_the_sum_of_prices_from_table(table, item_ids):
+    """
+    Returns the sum of the prices of the items in the item_ids.
+
+    Args:
+        table (list of lists): the sales table
+        item_ids (list of str): the ids
+
+    Returns:
+        number: the sum of the items' prices
+    """
+
+    # your code
+
+
+def get_customer_id_by_sale_id(sale_id):
+    """
+    Reads the sales table with the help of the data_manager module.
+    Returns the customer_id that belongs to the given sale_id
+    or None if no such sale_id is in the table.
+
+    Args:
+         sale_id (str): sale id to search for
+    Returns:
+         str: customer_id that belongs to the given sale id
+    """
+
+    # your code
+
+
+def get_customer_id_by_sale_id_from_table(table, sale_id):
+    """
+    Returns the customer_id that belongs to the given sale_id
+    or None if no such sale_id is in the table.
+
+    Args:
+        table: table to remove a record from
+        sale_id (str): sale id to search for
+    Returns:
+        str: customer_id that belongs to the given sale id
+    """
+
+    # your code
+
+
+def get_all_customer_ids():
+    """
+    Reads the sales table with the help of the data_manager module.
+
+    Returns:
+         set of str: set of customer_ids that are present in the table
+    """
+
+    # your code
+
+
+def get_all_customer_ids_from_table(table):
+    """
+    Returns a set of customer_ids that are present in the table.
+
+    Args:
+        table (list of list): the sales table
+    Returns:
+         set of str: set of customer_ids that are present in the table
+    """
+
+    # your code
+
+
+def get_all_sales_ids_for_customer_ids():
+    """
+    Reads the customer-sales association table with the help of the data_manager module.
+    Returns a dictionary of (customer_id, sale_ids) where:
+        customer_id:
+        sale_ids (list): all the sales belong to the given customer
+    (one customer id belongs to only one tuple)
+
+    Returns:
+         (dict of (key, value): (customer_id, (list) sale_ids)) where the sale_ids list contains
+            all the sales id belong to the given customer_id
+    """
+
+    # your code
+
+
+def get_all_sales_ids_for_customer_ids_form_table(table):
+    """
+    Returns a dictionary of (customer_id, sale_ids) where:
+        customer_id:
+        sale_ids (list): all the sales belong to the given customer
+    (one customer id belongs to only one tuple)
+    Args:
+        table (list of list): the sales table
+    Returns:
+         (dict of (key, value): (customer_id, (list) sale_ids)) where the sale_ids list contains
+         all the sales id belong to the given customer_id
+    """
+
+    # your code
+
+
+def get_num_of_sales_per_customer_ids():
+    """
+     Reads the customer-sales association table with the help of the data_manager module.
+     Returns a dictionary of (customer_id, num_of_sales) where:
+        customer_id:
+        num_of_sales (number): number of sales the customer made
+     Returns:
+         dict of (key, value): (customer_id (str), num_of_sales (number))
+    """
+
+    # your code
+
+
+def get_num_of_sales_per_customer_ids_from_table(table):
+    """
+     Returns a dictionary of (customer_id, num_of_sales) where:
+        customer_id:
+        num_of_sales (number): number of sales the customer made
+     Args:
+        table (list of list): the sales table
+     Returns:
+         dict of (key, value): (customer_id (str), num_of_sales (number))
+    """
+
+    # your code

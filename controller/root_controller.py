@@ -7,6 +7,7 @@ from controller import accounting_controller
 from controller import sales_controller
 from controller import crm_controller
 from controller import common
+from data_analyser import data_analyser # from controller!!!!!!!!
 import os
 
 
@@ -16,7 +17,8 @@ def run():
                "Inventory manager",
                "Accounting manager",
                "Sales manager",
-               "Customer Relationship Management (CRM)"]
+               "Customer Relationship Management (CRM)",
+               "Data Analyzer"]
 
     os.system("clear")
     terminal_view.print_predator()
@@ -37,6 +39,8 @@ def run():
             sales_controller.run()
         elif choice == "6":
             crm_controller.run()
+        elif option == "7":
+            data_analyser.start_module()
         else:
             if choice != "0":
                 terminal_view.print_error_message("There is no such choice.")
