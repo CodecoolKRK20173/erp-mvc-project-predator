@@ -233,6 +233,14 @@ class InventoryTester(unittest.TestCase):
         self.assertEqual(result, expected)
 
 
+<<<<<<< HEAD
+=======
+class DataAnalyserTester(unittest.TestCase):
+    def test_forbidden_functions(self):
+        check_forbidden_functions(self, "data_analyser/data_analyser.py")
+
+
+>>>>>>> week2
 def main():
     unittest.main()
 

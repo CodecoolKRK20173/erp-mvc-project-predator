@@ -8,6 +8,7 @@ Data table structure:
     * month (number): Month of the sale
     * day (number): Day of the sale
     * year (number): Year of the sale
+    * customer_id (string): id from the crm
 """
 
 # everything you'll need is imported:
