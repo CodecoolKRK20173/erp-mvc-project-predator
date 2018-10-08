@@ -78,11 +78,13 @@ def get_oldest_person(table):
             oldest_age = current_age
             oldest_name = current_name
     oldest_person_list = [oldest_name]
+    
     for i, record in enumerate(table):
         current_name = record[1]
         current_age = int(record[2])
         if current_age == oldest_age and current_name not in oldest_person_list:
-            oldest_person_list.extend(current_name)
+            oldest_person_list.append(current_name)
+         
     return oldest_person_list
 
 
