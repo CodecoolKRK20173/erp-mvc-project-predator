@@ -109,29 +109,18 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     """
     table_year = []
     for i in table:
-        if int(i[5]) > year_form and int(i[5]) < year_to:
+        if int(i[5]) > year_from and int(i[5]) < year_to:
             table_year = table_year + [i]
     table_month = []
     for i in table_year:
-        if int(i[3]) > month_form and int(i[3]) < month_to:
+        if int(i[3]) > month_from and int(i[3]) < month_to:
             table_month = table_month + [i]
     table_day = []
     for i in table_month:
-        if int(i[4]) > day_form and int(i[4]) < day_to:
+        if int(i[4]) > day_from and int(i[4]) < day_to:
             table_day = table_day + [i]
 
     return table_day
-
-
-
-
-
-
-
-
-
-
-
 
 
 # functions supports data abalyser
@@ -152,10 +141,11 @@ def get_title_by_id_from_table(table, identification):
     """
     for element in table:
         title = element[1]
-        if identification == element[0]: #lub -1 gdyby chodziło o ostatni ID
+        if identification == element[0]:  # lub -1 gdyby chodziło o ostatni ID
             return title
 
-def get_item_id_sold_last_from_table(table):
+
+def get_item_id_title_sold_last_from_table(table):
     """
     Returns the _id_ of the item that was sold most recently.
 
@@ -166,21 +156,39 @@ def get_item_id_sold_last_from_table(table):
         str: the _id_ of the item that was sold most recently.
     """
 
-    # your code
+    the_latest_year = int(table[0][-2])
+    last_sold_year = []
+    for element in table:
+        year = int(element[-2])
+        identificator = element[0]
+        title = element[1]
+        if year > the_latest_year:
+            the_latest_year = year
+            return identificator, title
+        if year == the_latest_year:
+            last_sold_year.append(element)
 
+    the_latest_month = int(last_sold_year[0][-4])
+    last_sold_month = []
+    for element in last_sold_year:
+        month = int(element[-4])
+        identificator = element[0]
+        title = element[1]
+        if month > the_latest_month:
+            the_latest_month = month
+            return identificator, title
+        if month == the_latest_month:
+            last_sold_month.append(element)
 
-def get_item_title_sold_last_from_table(table):
-    """
-    Returns the _title_ of the item that was sold most recently.
-
-    Args:
-        table (list of lists): the sales table
-
-    Returns:
-        str: the _title_ of the item that was sold most recently.
-    """
-
-    # your code
+    the_latest_day = int(last_sold_month[0][-3])
+    last_sold_day = []
+    for element in last_sold_month:
+        day = int(element[-3])
+        identificator = element[0]
+        title = element[1]
+        if day > the_latest_day or day == the_latest_day:
+            the_latest_day = day
+            return identificator, title
 
 
 def get_the_sum_of_prices_from_table(table, item_ids):
