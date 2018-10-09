@@ -107,7 +107,31 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     Returns:
         list: list of lists (the filtered table)
     """
-    pass
+    table_year = []
+    for i in table:
+        if int(i[x]) > year_form and int(i[x]) < year_to:
+            table_year = table_year + [i]
+    table_month = []
+    for i in table:
+        if int(i[x]) > month_form and int(i[x]) < month_to:
+            table_month = table_month + [i]
+    table_day = []
+    for i in table:
+        if int(i[x]) > day_form and int(i[x]) < day_to:
+            table_day = table_day + [i]
+
+    return table_day     
+
+
+
+
+
+
+
+
+
+
+
 
 
 # functions supports data abalyser
