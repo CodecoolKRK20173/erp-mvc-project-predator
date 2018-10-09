@@ -138,7 +138,7 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
 # --------------------------------
 
 
-def get_title_by_id_from_table(table, id):
+def get_title_by_id_from_table(table, identification):
 
     """
     Returns the title (str) of the item with the given id (str) on None om case of non-existing id.
@@ -150,9 +150,10 @@ def get_title_by_id_from_table(table, id):
     Returns:
         str: the title of the item
     """
-
-    # your code
-
+    for element in table:
+        title = element[1]
+        if identification == element[0]: #lub -1 gdyby chodziło o ostatni ID    
+            return title
 
 def get_item_id_sold_last_from_table(table):
     """

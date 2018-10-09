@@ -54,8 +54,6 @@ def update(table, id_, record):
 
 def get_longest_name_id(table):
 
-    # your code
-
     longest_name_number_of_id = len(max(table, key=lambda x: len(x[1]))[1])
     longest = []
     for item in table:
@@ -69,7 +67,6 @@ def get_longest_name_id(table):
 # return type: list of strings (where string is like email+separator+name, separator=";")
 def get_subscribed_emails(table):
 
-    # your code
     name_of_subscribers = []
     for line in table:
         if line[3] == "1":
@@ -81,9 +78,9 @@ def get_subscribed_emails(table):
 # --------------------------------
 
 
-def get_name_by_id_from_table(table, id):
+def get_name_by_id_from_table(table, identification):
     """
-    Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
+    Returns the name (str) of the customer with the given id (str) on None in case of non-existing id.
     Args:
         table (list of lists): the customer table
         id (str): the id of the customer
@@ -91,4 +88,7 @@ def get_name_by_id_from_table(table, id):
         str: the name of the customer
     """
 
-    # your code
+    for element in table:
+        customer = element[1]
+        if identification == element[0]:
+            return customer
