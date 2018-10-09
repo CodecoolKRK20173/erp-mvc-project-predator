@@ -302,7 +302,7 @@ def get_the_buyer_id_spent_most_and_the_money_spent():
     # your code
 
 
-def get_the_most_frequent_buyers_names(num=1):
+def get_the_most_frequent_buyers_names(table_from_customers,table_from_sales,num=1):
     """
     Returns 'num' number of buyers (more precisely: the customer's name) who bought most frequently in an
     ordered list of tuples of customer names and the number of their sales.
@@ -315,14 +315,14 @@ def get_the_most_frequent_buyers_names(num=1):
             The first one bought the most frequent. eg.: [('Genoveva Dingess', 8), ('Missy Stoney', 3)]
     """
 
-    list_of_buyers = []
-    for i in table:
-        if i[2] > num:
-            list_of_buyers = list_of_buyers + [(i[1],i[2])]
-    return list_of_buyers
+    list_of_id_and_number_sales = get_the_most_frequent_buyers_ids(table_from_sales , num)
+    for i in range(0,len(list_of_id_and_number_sales)):
+        for w in table_from_customers:
+            if w[0] == list_of_id_and_number_sales[i][0]:
+                list_of_id_and_number_sales[i] = (w[1],list_of_id_and_number_sales[i][1])
+    return list_of_id_and_number_sales
 
-
-def get_the_most_frequent_buyers_ids(table , num=1):
+def get_the_most_frequent_buyers_ids(table , num=1): # table from sales
 
     """
     Returns 'num' number of buyers (more precisely: the customer ids of them) who bought more frequent in an
@@ -337,6 +337,14 @@ def get_the_most_frequent_buyers_ids(table , num=1):
     """
     list_of_buyers = []
     for i in table:
-        if i[2] > num:
-            list_of_buyers = list_of_buyers + [i[-1],(i[2])]
+        for w in list_of_buyers:
+            if i[-1] == w:
+                continue
+                list_of_buyers = list_of_buyers + [i[-1]]
+    for i in range(0,len(list_of_buyers)):
+        n = 0
+        for w in table:
+            if list_of_buyers[i] == w[1]:
+                n = n + 1
+        list_of_buyers[i] = (list_of_buyers,n)
     return list_of_buyers
