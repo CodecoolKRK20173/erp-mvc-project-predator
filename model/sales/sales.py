@@ -318,7 +318,8 @@ def get_the_most_frequent_buyers_names(num=1):
     # your code
 
 
-def get_the_most_frequent_buyers_ids(num=1):
+def get_the_most_frequent_buyers_ids(table , num=1):
+
     """
     Returns 'num' number of buyers (more precisely: the customer ids of them) who bought more frequent in an
     ordered list of tuples of customer id and the number their sales.
@@ -330,5 +331,8 @@ def get_the_most_frequent_buyers_ids(num=1):
         list of tuples: Ordered list of tuples of customer ids and num of sales
             The first one bought the most frequent. eg.: [(aH34Jq#&, 8), (bH34Jq#&, 3)]
     """
-
-    # your code
+    list_of_buyers = []
+    for i in table:
+        if i[2] > num:
+            list_of_buyers = list_of_buyers + [(i[2],i[-1])]
+    return list_of_buyers
