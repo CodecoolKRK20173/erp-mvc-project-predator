@@ -315,7 +315,11 @@ def get_the_most_frequent_buyers_names(num=1):
             The first one bought the most frequent. eg.: [('Genoveva Dingess', 8), ('Missy Stoney', 3)]
     """
 
-    # your code
+    list_of_buyers = []
+    for i in table:
+        if i[2] > num:
+            list_of_buyers = list_of_buyers + [(i[1],i[2])]
+    return list_of_buyers
 
 
 def get_the_most_frequent_buyers_ids(table , num=1):
@@ -334,5 +338,5 @@ def get_the_most_frequent_buyers_ids(table , num=1):
     list_of_buyers = []
     for i in table:
         if i[2] > num:
-            list_of_buyers = list_of_buyers + [(i[2],i[-1])]
+            list_of_buyers = list_of_buyers + [i[-1],(i[2])]
     return list_of_buyers
