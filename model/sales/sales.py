@@ -128,7 +128,7 @@ def get_title_by_id_from_table(table, identification):
     """
     for element in table:
         title = element[1]
-        if identification == element[0]: #lub -1 gdyby chodziło o ostatni ID    
+        if identification == element[0]:  
             return title
 
 def get_item_id_sold_last_from_table(table):
@@ -245,17 +245,26 @@ def get_the_last_buyer_name():
     # your code
 
 
-def get_the_last_buyer_id():
+def get_the_last_buyer_id(table):
     """
     Returns the customer _id_ of the customer made sale last.
 
     Returns:
         str: Customer id of the last buyer
     """
+    #last year
+    
 
-    # your code
 
+    
+    """
 
+    for element in table:
+        buyer_name = element[1]
+        if buyer_id == element[0]:
+            return buyer_name
+        
+    """
 def get_the_buyer_name_spent_most_and_the_money_spent():
     """
     Returns the customer's _name_ who spent the most in sum and the money (s)he spent.
