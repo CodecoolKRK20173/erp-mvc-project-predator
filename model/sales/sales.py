@@ -253,8 +253,13 @@ def get_all_sales_ids_for_customer_ids_form_table(table):
          (dict of (key, value): (customer_id, (list) sale_ids)) where the sale_ids list contains
          all the sales id belong to the given customer_id
     """
-
-    # your code
+    all_sales_id = []
+    
+    for element in table:
+        single_sales_id = element[0]
+        if single_sales_id not in all_sales_id:
+            all_sales_id.append(single_sales_id)
+    return all_sales_id
 
 
 def get_num_of_sales_per_customer_ids_from_table(table):
