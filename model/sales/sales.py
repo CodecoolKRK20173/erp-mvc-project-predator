@@ -141,7 +141,7 @@ def get_title_by_id_from_table(table, identification):
     """
     for element in table:
         title = element[1]
-        if identification == element[0]:  # lub -1 gdyby chodziło o ostatni ID
+        if identification == element[0]:  
             return title
 
 
@@ -227,8 +227,11 @@ def get_customer_id_by_sale_id_from_table(table, sale_id):
         str: customer_id that belongs to the given sale id
     """
 
-    # your code
-
+    for element in table:
+        customer_id = element[-1]
+        if sale_id == element[0]:  
+            return customer_id
+    
 
 def get_all_customer_ids_from_table(table):
     """
@@ -239,8 +242,15 @@ def get_all_customer_ids_from_table(table):
     Returns:
          set of str: set of customer_ids that are present in the table
     """
-
-    # your code
+    all_customers_id = []
+    
+    for element in table:
+        single_customer_id = element[-1]
+        if single_customer_id not in all_customers_id:
+            all_customers_id.append(single_customer_id)
+            
+                 
+    return all_customers_id
 
 
 def get_all_sales_ids_for_customer_ids_form_table(table):
@@ -255,8 +265,13 @@ def get_all_sales_ids_for_customer_ids_form_table(table):
          (dict of (key, value): (customer_id, (list) sale_ids)) where the sale_ids list contains
          all the sales id belong to the given customer_id
     """
-
-    # your code
+    all_sales_id = []
+    
+    for element in table:
+        single_sales_id = element[0]
+        if single_sales_id not in all_sales_id:
+            all_sales_id.append(single_sales_id)
+    return all_sales_id
 
 
 def get_num_of_sales_per_customer_ids_from_table(table):
@@ -286,17 +301,26 @@ def get_the_last_buyer_name():
     # your code
 
 
-def get_the_last_buyer_id():
+def get_the_last_buyer_id(table):
     """
     Returns the customer _id_ of the customer made sale last.
 
     Returns:
         str: Customer id of the last buyer
     """
+    #last year
+    
 
-    # your code
 
+    
+    """
 
+    for element in table:
+        buyer_name = element[1]
+        if buyer_id == element[0]:
+            return buyer_name
+        
+    """
 def get_the_buyer_name_spent_most_and_the_money_spent():
     """
     Returns the customer's _name_ who spent the most in sum and the money (s)he spent.
