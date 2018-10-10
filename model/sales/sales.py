@@ -308,19 +308,48 @@ def get_the_last_buyer_id(table):
     Returns:
         str: Customer id of the last buyer
     """
-    #last year
-    
+
+    if not table:
+        return None
+
+    latest_year = int(table[0][-2])
+    for game in table[1:]:
+        youngest_year = int(game[-2])
+        if youngest_year > latest_year:
+            latest_year = youngest_year
+
+    greatest_year_games = []
+    for game in table:
+        identity = game[-1]
+        if int(game[-2]) == latest_year:
+            greatest_year_games.append(game)
+
+    latest_month = int(greatest_year_games[0][-4])
+    for game in greatest_year_games[1:]:
+        youngest_month = int(game[-4])
+        if youngest_month > latest_month:
+            latest_month = youngest_month
+
+    greatest_month_games = []
+    for game in greatest_year_games:
+        identity = game[-1]
+        if int(game[-4]) == latest_month:
+            greatest_month_games.append(game)
+
+    latest_day = int(greatest_month_games[0][-3])
+    for game in greatest_month_games[1:]:
+        youngest_day = int(game[-3])
+        if youngest_day > latest_day:
+            latest_day = youngest_day
+
+    greatest_day_games = []
+    for game in greatest_month_games:
+        identity = game[-1]
+        if int(game[-3]) == latest_day:
+            greatest_day_games.append(game)
+            return identity
 
 
-    
-    """
-
-    for element in table:
-        buyer_name = element[1]
-        if buyer_id == element[0]:
-            return buyer_name
-        
-    """
 def get_the_buyer_name_spent_most_and_the_money_spent():
     """
     Returns the customer's _name_ who spent the most in sum and the money (s)he spent.
