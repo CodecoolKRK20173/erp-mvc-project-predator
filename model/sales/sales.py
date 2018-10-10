@@ -212,7 +212,17 @@ def get_the_sum_of_prices_from_table(table, item_ids):
         number: the sum of the items' prices
     """
 
-    # your code
+    sum_price = []
+    for element in table:
+        #product_id = element[0]
+        product_id = 'kH34Ju#&'
+        item_id = element[0]  
+        if product_id in item_id:
+            item_price = int(element[2])
+            sum_price.append(item_price)
+            result =  sum(sum_price)
+            
+    return result
 
 
 def get_customer_id_by_sale_id_from_table(table, sale_id):
