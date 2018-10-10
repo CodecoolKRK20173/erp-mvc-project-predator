@@ -107,7 +107,20 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     Returns:
         list: list of lists (the filtered table)
     """
-    pass
+    table_year = []
+    for i in table:
+        if int(i[5]) > year_from and int(i[5]) < year_to:
+            table_year = table_year + [i]
+    table_month = []
+    for i in table_year:
+        if int(i[3]) > month_from and int(i[3]) < month_to:
+            table_month = table_month + [i]
+    table_day = []
+    for i in table_month:
+        if int(i[4]) > day_from and int(i[4]) < day_to:
+            table_day = table_day + [i]
+
+    return table_day
 
 
 # functions supports data abalyser
@@ -131,7 +144,8 @@ def get_title_by_id_from_table(table, identification):
         if identification == element[0]:  
             return title
 
-def get_item_id_sold_last_from_table(table):
+
+def get_item_id_title_sold_last_from_table(table):
     """
     Returns the _id_ of the item that was sold most recently.
 
@@ -142,21 +156,39 @@ def get_item_id_sold_last_from_table(table):
         str: the _id_ of the item that was sold most recently.
     """
 
-    # your code
+    the_latest_year = int(table[0][-2])
+    last_sold_year = []
+    for element in table:
+        year = int(element[-2])
+        identificator = element[0]
+        title = element[1]
+        if year > the_latest_year:
+            the_latest_year = year
+            return identificator, title
+        if year == the_latest_year:
+            last_sold_year.append(element)
 
+    the_latest_month = int(last_sold_year[0][-4])
+    last_sold_month = []
+    for element in last_sold_year:
+        month = int(element[-4])
+        identificator = element[0]
+        title = element[1]
+        if month > the_latest_month:
+            the_latest_month = month
+            return identificator, title
+        if month == the_latest_month:
+            last_sold_month.append(element)
 
-def get_item_title_sold_last_from_table(table):
-    """
-    Returns the _title_ of the item that was sold most recently.
-
-    Args:
-        table (list of lists): the sales table
-
-    Returns:
-        str: the _title_ of the item that was sold most recently.
-    """
-
-    # your code
+    the_latest_day = int(last_sold_month[0][-3])
+    last_sold_day = []
+    for element in last_sold_month:
+        day = int(element[-3])
+        identificator = element[0]
+        title = element[1]
+        if day > the_latest_day or day == the_latest_day:
+            the_latest_day = day
+            return identificator, title
 
 
 def get_the_sum_of_prices_from_table(table, item_ids):
@@ -187,7 +219,7 @@ def get_customer_id_by_sale_id_from_table(table, sale_id):
     """
 
     # your code
-
+    
 
 def get_all_customer_ids_from_table(table):
     """
@@ -198,8 +230,15 @@ def get_all_customer_ids_from_table(table):
     Returns:
          set of str: set of customer_ids that are present in the table
     """
-
-    # your code
+    all_customers_id = []
+    
+    for element in table:
+        single_customer_id = element[-1]
+        if single_customer_id not in all_customers_id:
+            all_customers_id.append(single_customer_id)
+            
+                 
+    return all_customers_id
 
 
 def get_all_sales_ids_for_customer_ids_form_table(table):
@@ -287,7 +326,7 @@ def get_the_buyer_id_spent_most_and_the_money_spent():
     # your code
 
 
-def get_the_most_frequent_buyers_names(num=1):
+def get_the_most_frequent_buyers_names(table_from_customers,table_from_sales,num=1):
     """
     Returns 'num' number of buyers (more precisely: the customer's name) who bought most frequently in an
     ordered list of tuples of customer names and the number of their sales.
@@ -300,10 +339,15 @@ def get_the_most_frequent_buyers_names(num=1):
             The first one bought the most frequent. eg.: [('Genoveva Dingess', 8), ('Missy Stoney', 3)]
     """
 
-    # your code
+    list_of_id_and_number_sales = get_the_most_frequent_buyers_ids(table_from_sales , num)
+    for i in range(0,len(list_of_id_and_number_sales)):
+        for w in table_from_customers:
+            if w[0] == list_of_id_and_number_sales[i][0]:
+                list_of_id_and_number_sales[i] = (w[1],list_of_id_and_number_sales[i][1])
+    return list_of_id_and_number_sales
 
+def get_the_most_frequent_buyers_ids(table , num=1): # table from sales
 
-def get_the_most_frequent_buyers_ids(num=1):
     """
     Returns 'num' number of buyers (more precisely: the customer ids of them) who bought more frequent in an
     ordered list of tuples of customer id and the number their sales.
@@ -315,5 +359,16 @@ def get_the_most_frequent_buyers_ids(num=1):
         list of tuples: Ordered list of tuples of customer ids and num of sales
             The first one bought the most frequent. eg.: [(aH34Jq#&, 8), (bH34Jq#&, 3)]
     """
-
-    # your code
+    list_of_buyers = []
+    for i in table:
+        for w in list_of_buyers:
+            if i[-1] == w:
+                continue
+                list_of_buyers = list_of_buyers + [i[-1]]
+    for i in range(0,len(list_of_buyers)):
+        n = 0
+        for w in table:
+            if list_of_buyers[i] == w[1]:
+                n = n + 1
+        list_of_buyers[i] = (list_of_buyers,n)
+    return list_of_buyers
