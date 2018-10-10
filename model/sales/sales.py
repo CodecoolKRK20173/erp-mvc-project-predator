@@ -12,8 +12,8 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-#from model import data_manager
-#from model import common
+from model import data_manager
+from model import common
 
 
 def add(table, record):
@@ -141,7 +141,7 @@ def get_title_by_id_from_table(table, identification):
     """
     for element in table:
         title = element[1]
-        if identification == element[0]:  
+        if identification == element[0]:
             return title
 
 
@@ -229,9 +229,9 @@ def get_customer_id_by_sale_id_from_table(table, sale_id):
 
     for element in table:
         customer_id = element[-1]
-        if sale_id == element[0]:  
+        if sale_id == element[0]:
             return customer_id
-    
+
 
 def get_all_customer_ids_from_table(table):
     """
@@ -243,13 +243,11 @@ def get_all_customer_ids_from_table(table):
          set of str: set of customer_ids that are present in the table
     """
     all_customers_id = []
-    
     for element in table:
         single_customer_id = element[-1]
         if single_customer_id not in all_customers_id:
             all_customers_id.append(single_customer_id)
-            
-                 
+
     return all_customers_id
 
 
@@ -266,7 +264,6 @@ def get_all_sales_ids_for_customer_ids_form_table(table):
          all the sales id belong to the given customer_id
     """
     all_sales_id = []
-    
     for element in table:
         single_sales_id = element[0]
         if single_sales_id not in all_sales_id:
@@ -290,7 +287,7 @@ def get_num_of_sales_per_customer_ids_from_table(table):
 # ----------------- from data_analyzer --------------------
 
 
-def get_the_last_buyer_name():
+def get_the_last_buyer_name(table_from_customers, table_from_sales):
     """
     Returns the customer _name_ of the customer made sale last.
 
@@ -298,7 +295,12 @@ def get_the_last_buyer_name():
         str: Customer name of the last buyer
     """
 
-    # your code
+    identity_from_sales = get_the_last_buyer_id(table_from_sales)
+    for customer in table_from_customers:
+        identity_from_customers = customer[0]
+        name = customer[1]
+        if identity_from_sales == identity_from_customers:
+            return name
 
 
 def get_the_last_buyer_id(table):
@@ -372,7 +374,7 @@ def get_the_buyer_id_spent_most_and_the_money_spent():
     # your code
 
 
-def get_the_most_frequent_buyers_names(table_from_customers,table_from_sales,num=1):
+def get_the_most_frequent_buyers_names(table_from_customers, table_from_sales, num=1):
     """
     Returns 'num' number of buyers (more precisely: the customer's name) who bought most frequently in an
     ordered list of tuples of customer names and the number of their sales.
@@ -385,14 +387,15 @@ def get_the_most_frequent_buyers_names(table_from_customers,table_from_sales,num
             The first one bought the most frequent. eg.: [('Genoveva Dingess', 8), ('Missy Stoney', 3)]
     """
 
-    list_of_id_and_number_sales = get_the_most_frequent_buyers_ids(table_from_sales , num)
-    for i in range(0,len(list_of_id_and_number_sales)):
+    list_of_id_and_number_sales = get_the_most_frequent_buyers_ids(table_from_sales, num)
+    for i in range(0, len(list_of_id_and_number_sales)):
         for w in table_from_customers:
             if w[0] == list_of_id_and_number_sales[i][0]:
-                list_of_id_and_number_sales[i] = (w[1],list_of_id_and_number_sales[i][1])
+                list_of_id_and_number_sales[i] = (w[1], list_of_id_and_number_sales[i][1])
     return list_of_id_and_number_sales
 
-def get_the_most_frequent_buyers_ids(table , num=1): # table from sales
+
+def get_the_most_frequent_buyers_ids(table, num=1):  # table from sales
 
     """
     Returns 'num' number of buyers (more precisely: the customer ids of them) who bought more frequent in an
@@ -411,10 +414,10 @@ def get_the_most_frequent_buyers_ids(table , num=1): # table from sales
             if i[-1] == w:
                 continue
                 list_of_buyers = list_of_buyers + [i[-1]]
-    for i in range(0,len(list_of_buyers)):
+    for i in range(0, len(list_of_buyers)):
         n = 0
         for w in table:
             if list_of_buyers[i] == w[1]:
                 n = n + 1
-        list_of_buyers[i] = (list_of_buyers,n)
+        list_of_buyers[i] = (list_of_buyers, n)
     return list_of_buyers
