@@ -12,8 +12,8 @@ Data table structure:
 """
 
 # everything you'll need is imported:
-from model import data_manager
-from model import common
+#from model import data_manager
+#from model import common
 
 
 def add(table, record):
@@ -145,7 +145,7 @@ def get_title_by_id_from_table(table, identification):
             return title
 
 
-def get_item_id_title_sold_last_from_table(table):
+def get_item_id_title_sold_last(table):
     """
     Returns the _id_ of the item that was sold most recently.
 
@@ -156,39 +156,48 @@ def get_item_id_title_sold_last_from_table(table):
         str: the _id_ of the item that was sold most recently.
     """
 
-    the_latest_year = int(table[0][-2])
-    last_sold_year = []
-    for element in table:
-        year = int(element[-2])
-        identificator = element[0]
-        title = element[1]
-        if year > the_latest_year:
-            the_latest_year = year
-            return identificator, title
-        if year == the_latest_year:
-            last_sold_year.append(element)
+    if not table:
+        return None
 
-    the_latest_month = int(last_sold_year[0][-4])
-    last_sold_month = []
-    for element in last_sold_year:
-        month = int(element[-4])
-        identificator = element[0]
-        title = element[1]
-        if month > the_latest_month:
-            the_latest_month = month
-            return identificator, title
-        if month == the_latest_month:
-            last_sold_month.append(element)
+    latest_year = int(table[0][-2])
+    for game in table[1:]:
+        youngest_year = int(game[-2])
+        if youngest_year > latest_year:
+            latest_year = youngest_year
 
-    the_latest_day = int(last_sold_month[0][-3])
-    last_sold_day = []
-    for element in last_sold_month:
-        day = int(element[-3])
-        identificator = element[0]
-        title = element[1]
-        if day > the_latest_day or day == the_latest_day:
-            the_latest_day = day
-            return identificator, title
+    greatest_year_games = []
+    for game in table:
+        identity = game[0]
+        title = game[1]
+        if int(game[-2]) == latest_year:
+            greatest_year_games.append(game)
+
+    latest_month = int(greatest_year_games[0][-4])
+    for game in greatest_year_games[1:]:
+        youngest_month = int(game[-4])
+        if youngest_month > latest_month:
+            latest_month = youngest_month
+
+    greatest_month_games = []
+    for game in greatest_year_games:
+        identity = game[0]
+        title = game[1]
+        if int(game[-4]) == latest_month:
+            greatest_month_games.append(game)
+
+    latest_day = int(greatest_month_games[0][-3])
+    for game in greatest_month_games[1:]:
+        youngest_day = int(game[-3])
+        if youngest_day > latest_day:
+            latest_day = youngest_day
+
+    greatest_day_games = []
+    for game in greatest_month_games:
+        identity = game[0]
+        title = game[1]
+        if int(game[-3]) == latest_day:
+            greatest_day_games.append(game)
+            return identity, title
 
 
 def get_the_sum_of_prices_from_table(table, item_ids):
