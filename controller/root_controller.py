@@ -8,8 +8,6 @@ from controller import sales_controller
 from controller import crm_controller
 from controller import data_analysis_controller
 from controller import common
-
-
 import os
 
 
@@ -23,9 +21,10 @@ def run():
                "Data Analyzer"]
 
     os.system("clear")
-    terminal_view.print_predator()
     choice = None
     while choice != "0":
+        os.system("clear")
+        terminal_view.print_predator()
         terminal_view.print_menu("What controller would you like to open:", options, "Exit")
         choice = terminal_view.get_choice(options)
         os.system("clear")
@@ -45,4 +44,4 @@ def run():
             data_analysis_controller.run()
         else:
             if choice != "0":
-                terminal_view.print_error_message("There is no such choice.")
+                terminal_view.print_error_message("There is no such choice.\n")
