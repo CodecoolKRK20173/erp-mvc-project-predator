@@ -23,25 +23,26 @@ def run():
                   "* day of the sale",
                   "* year of the sale",
                   "* customer's id"]
+
     # number at the end is a line in the model
-    # ! sign is unfinished function but added in options
+    # ! sign with a position is unfinished function but added in options
     # ??? possible rework of the function
-    # number from the start is the number of the unfinished yet option
+
     options = ["Print table",
-               "Show game title by id-130",
+               "Get game title by id-130",
                "Show the most recently sold game-148",
                "!4.Get the sum of games' prices by their sale id-203",
                "Get the customer's id by the sales id of a game-218",
                "Show ids of all customers-236",
                "Show sale ids of all customers-254(???)",
                "!8.Show the sale numbers of games for each customer-274",
-               "9.Show the owner of a recently sold game-290",
-               "10.Show the owner's id of a recently sold game-306",
-               "11.Show the customer who spent the most and the amount spent-355",
-               "12.Show the customer's id who spent the most and the amount spent-366",
-               "13.Show the most frequent buyers-377",
-               "14.Show the most frequent buyers' ids-398",
-               "15. file from crm here"]
+               "Show the owner of a recently sold game-300",
+               "Show the owner's id of a recently sold game-316",
+               "Show the customer who spent the most and the amount spent-365",
+               "Show the customer's id who spent the most and the amount spent-376",
+               "Show the most frequent buyers-387",
+               "Show the ids of the most frequent buyers-408",
+               "Get the customer by id-81"]
 
     os.system('clear')
     file = "model/sales/sales.csv"
@@ -127,6 +128,93 @@ def run():
             num_of_sales_per_customer = sales.get_num_of_sales_per_customer_ids_from_table(table)
             os.system("clear")
             print("Sale numbers of games for each customer: ", num_of_sales_per_customer)
+            common.waiting()
+            os.system("clear")
+
+        elif choice == "9":
+            file_name_sales = common.get_input("Choose a file with sales: ")
+            file_name_customer = common.get_input("Choose a file with customers: ")
+            if file_name_sales == "":
+                file_name_sales = file
+            if file_name_customer == "":
+                file_name_customer = "model/crm/customers.csv"
+            table_from_customers = common.get_table_from_file(file_name_customer)
+            table_from_sales = common.get_table_from_file(file_name_sales)
+            last_buyer = sales.get_the_last_buyer_name(table_from_customers, table_from_sales)
+            os.system("clear")
+            print("Owner of a recently sold game: ", last_buyer)
+            common.waiting()
+            os.system("clear")
+
+        elif choice == "10":
+            file_name = common.get_input("Choose a file: ")
+            if file_name == "":
+                file_name = file
+            table = common.get_table_from_file(file_name)
+            last_buyer_id = sales.get_the_last_buyer_id(table)
+            os.system("clear")
+            print("Owner's id of a recently sold game: ", last_buyer_id)
+            common.waiting()
+            os.system("clear")
+
+        elif choice == "11":
+            file_name = common.get_input("Choose a file: ")
+            if file_name == "":
+                file_name = file
+            table = common.get_table_from_file(file_name)
+            buyer_name_spent_most_and_money = sales.get_the_buyer_name_spent_most_and_the_money_spent(table)
+            os.system("clear")
+            print("Customer who spent the most and the amount spent: ", buyer_name_spent_most_and_money)
+            common.waiting()
+            os.system("clear")
+
+        elif choice == "12":
+            file_name = common.get_input("Choose a file: ")
+            if file_name == "":
+                file_name = file
+            table = common.get_table_from_file(file_name)
+            buyer_id_spent_most_and_money = sales.get_the_buyer_id_spent_most_and_the_money_spent(table)
+            os.system("clear")
+            print("Customer's id who spent the most and the amount spent: ", buyer_id_spent_most_and_money)
+            common.waiting()
+            os.system("clear")
+
+        elif choice == "13":
+            file_name_sales = common.get_input("Choose a file with sales: ")
+            file_name_customer = common.get_input("Choose a file with customers: ")
+            if file_name_sales == "":
+                file_name_sales = file
+            if file_name_customer == "":
+                file_name_customer = "model/crm/customers.csv"
+            table_from_customers = common.get_table_from_file(file_name_customer)
+            table_from_sales = common.get_table_from_file(file_name_sales)
+            the_most_frequent_buyers = sales.get_the_most_frequent_buyers_names(table_from_customers,
+                                                                                table_from_sales,
+                                                                                num=1)
+            os.system("clear")
+            print("The most frequent buyers: ", the_most_frequent_buyers)
+            common.waiting()
+            os.system("clear")
+
+        elif choice == "14":
+                file_name = common.get_input("Choose a file: ")
+                if file_name == "":
+                    file_name = file
+                table = common.get_table_from_file(file_name)
+                the_most_frequent_buyers_ids = sales.get_the_most_frequent_buyers_ids(table, num=1)
+                os.system("clear")
+                print("ids of the most frequent buyers: ", the_most_frequent_buyers_ids)
+                common.waiting()
+                os.system("clear")
+
+        elif choice == "15":
+            file_name = common.get_input("Choose a file: ")
+            if file_name == "":
+                file_name = "model/crm/customers.csv"
+            table = common.get_table_from_file(file_name)
+            terminal_view.print_table(table, title_list)
+            identification = common.get_input("Enter the id: ")
+            print(crm.get_name_by_id_from_table(table, identification))
             common.waiting()
             os.system("clear")
 
