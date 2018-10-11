@@ -31,16 +31,16 @@ def run():
     options = ["Print table",
                "Get game title by id-130",
                "Show the most recently sold game-148",
-               "!4.Get the sum of games' prices by their sale id-203",
-               "Get the customer's id by the sales id of a game-218",
+               "Get the sum of games' prices by their id-203",
+               "Get the customer's id by the id of a game-228",
                "Show ids of all customers-236",
                "Show sale ids of all customers-254(???)",
                "!8.Show the sale numbers of games for each customer-274",
                "Show the owner of a recently sold game-300",
                "Show the owner's id of a recently sold game-316",
-               "Show the customer who spent the most and the amount spent-365",
-               "Show the customer's id who spent the most and the amount spent-376",
-               "Show the most frequent buyers-387",
+               "!Show the customer who spent the most and the amount spent-365",
+               "!Show the customer's id who spent the most and the amount spent-376",
+               "!Show the most frequent buyers-387",
                "Show the ids of the most frequent buyers-408",
                "Get the customer by id-81"]
 
@@ -72,7 +72,8 @@ def run():
             table = common.get_table_from_file(file_name)
             most_recently_sold_game = sales.get_item_id_title_sold_last(table)
             os.system("clear")
-            print("The most recently sold game is: ", most_recently_sold_game)
+            print("The most recently sold game is: ")
+            terminal_view.print_table([most_recently_sold_game], ["id", "title"])
             common.waiting()
             os.system("clear")
 
@@ -82,7 +83,13 @@ def run():
                 file_name = file
             table = common.get_table_from_file(file_name)
             terminal_view.print_table(table, title_list)
-            item_ids = common.get_input("Enter the id: ")
+            item_ids = []
+            x = True
+            while x:
+                add_id = common.get_input("Enter the id or 'x' to exit: ")
+                if add_id == "x":
+                    x = False
+                item_ids.append(add_id)
             print(sales.get_the_sum_of_prices_from_table(table, item_ids))
             common.waiting()
             os.system("clear")
@@ -93,7 +100,7 @@ def run():
                 file_name = file
             table = common.get_table_from_file(file_name)
             terminal_view.print_table(table, title_list)
-            item_ids = common.get_input("Enter the sale id: ")
+            sale_id = common.get_input("Enter the id of a game: ")
             print(sales.get_customer_id_by_sale_id_from_table(table, sale_id))
             common.waiting()
             os.system("clear")
@@ -133,9 +140,9 @@ def run():
 
         elif choice == "9":
             file_name_sales = common.get_input("Choose a file with sales: ")
-            file_name_customer = common.get_input("Choose a file with customers: ")
             if file_name_sales == "":
                 file_name_sales = file
+            file_name_customer = common.get_input("Choose a file with customers: ")
             if file_name_customer == "":
                 file_name_customer = "model/crm/customers.csv"
             table_from_customers = common.get_table_from_file(file_name_customer)
@@ -181,9 +188,9 @@ def run():
 
         elif choice == "13":
             file_name_sales = common.get_input("Choose a file with sales: ")
-            file_name_customer = common.get_input("Choose a file with customers: ")
             if file_name_sales == "":
                 file_name_sales = file
+            file_name_customer = common.get_input("Choose a file with customers: ")
             if file_name_customer == "":
                 file_name_customer = "model/crm/customers.csv"
             table_from_customers = common.get_table_from_file(file_name_customer)
