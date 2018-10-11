@@ -6,8 +6,10 @@ from controller import inventory_controller
 from controller import accounting_controller
 from controller import sales_controller
 from controller import crm_controller
+from controller import data_analysis_controller
 from controller import common
-#from data_analyser import data_analyser # from controller!!!!!!!!
+
+
 import os
 
 
@@ -39,8 +41,8 @@ def run():
             sales_controller.run()
         elif choice == "6":
             crm_controller.run()
-        elif option == "7":
-            data_analyser.start_module()
+        elif choice == "7":
+            data_analysis_controller.run()
         else:
             if choice != "0":
                 terminal_view.print_error_message("There is no such choice.")
