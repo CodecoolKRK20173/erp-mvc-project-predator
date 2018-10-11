@@ -20,7 +20,8 @@ def run():
                   "* price",
                   "* month of the sale",
                   "* day of the sale",
-                  "* year of the sale"]
+                  "* year of the sale",
+                  "* id of customer"]
 
     options = ["Add new record to table",
                "Remove a record with a given id from the table",
