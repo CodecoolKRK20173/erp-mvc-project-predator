@@ -389,21 +389,21 @@ def get_the_buyer_id_spent_most_and_the_money_spent(table):
         tuple: Tuple of customer id and the sum the customer spent eg.: (aH34Jq#&, 42)
     """
 
-        list_of_buyers = []
-        for i in table:
-            for w in list_of_buyers:
-                if i[-1] == w:
-                    continue
-                    list_of_buyers = list_of_buyers + [i[-1]]
+    list_of_buyers = []
+    for i in table:
+        for w in list_of_buyers:
+            if i[-1] == w:
+                continue
+                list_of_buyers = list_of_buyers + [i[-1]]
 
-        for i in range(0,len(list_of_buyers)):
-            list_of_buyers[i] = [list_of_buyers[i],0]
+    for i in range(0,len(list_of_buyers)):
+        list_of_buyers[i] = [list_of_buyers[i],0]
 
-        for i in range(0,len(list_of_buyers)):
-            for w in table:
-                if list_of_buyers[i] == w[0]:
-                    list_of_buyers[i][1] = list_of_buyers[i][1] + w[2]
-        return list_of_buyers
+    for i in range(0,len(list_of_buyers)):
+        for w in table:
+            if list_of_buyers[i] == w[0]:
+                list_of_buyers[i][1] = list_of_buyers[i][1] + w[2]
+    return list_of_buyers
 
 
 def get_the_most_frequent_buyers_names(table_from_customers, table_from_sales, num=1):
@@ -440,16 +440,15 @@ def get_the_most_frequent_buyers_ids(table, num=1):  # table from sales
         list of tuples: Ordered list of tuples of customer ids and num of sales
             The first one bought the most frequent. eg.: [(aH34Jq#&, 8), (bH34Jq#&, 3)]
     """
+    n = 0
     list_of_buyers = []
     for i in table:
-        for w in list_of_buyers:
-            if i[-1] == w:
-                continue
-                list_of_buyers = list_of_buyers + [i[-1]]
+        if i[-1] in list_of_buyers:
+            continue
+        list_of_buyers = list_of_buyers + [i[-1]]
     for i in range(0, len(list_of_buyers)):
-        n = 0
         for w in table:
-            if list_of_buyers[i] == w[1]:
+            if list_of_buyers[i] == w[0]:
                 n = n + 1
-        list_of_buyers[i] = (list_of_buyers, n)
+        list_of_buyers[i] = [list_of_buyers[i], n]
     return list_of_buyers
