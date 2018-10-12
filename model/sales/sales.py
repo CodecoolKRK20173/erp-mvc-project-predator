@@ -275,12 +275,18 @@ def get_all_sales_ids_for_customer_ids_form_table(table):
          (dict of (key, value): (customer_id, (list) sale_ids)) where the sale_ids list contains
          all the sales id belong to the given customer_id
     """
-    all_sales_id = []
-    for element in table:
-        single_sales_id = element[0]
-        if single_sales_id not in all_sales_id:
-            all_sales_id.append(single_sales_id)
-    return all_sales_id
+    my_dictionary = {}
+    id_list = []
+    for game in table:
+        key = game[-1]
+        value = game[0]
+        my_dictionary[key] = [value]
+
+        if key == client:
+            id_list.append(value)
+            my_dictionary[key] = id_list
+
+    return my_dictionary
 
 
 def get_num_of_sales_per_customer_ids_from_table(table):
