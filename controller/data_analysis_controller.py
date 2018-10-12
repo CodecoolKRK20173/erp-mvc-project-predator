@@ -25,10 +25,11 @@ def run():
                   "* customer's id"]
 
     # ! sign with a position is unfinished function but added in options
-    # !8. Show the sale numbers of games for each customer-274
+    # !8. Show the sale numbers of games for each customer-292
     # !11. Show the customer who spent the most and the amount spent-365"
     # !12. Show the customer's id who spent the most and the amount spent-376"
     # !13. Show the most frequent buyers-387
+    # !14. Show the if of the most freuent buyers-
 
     options = ["Print table",
                "Get game title by id",
@@ -61,7 +62,7 @@ def run():
 
         elif choice == "2":
             os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
@@ -72,8 +73,7 @@ def run():
             os.system("clear")
 
         elif choice == "3":
-            os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
@@ -85,7 +85,7 @@ def run():
 
         elif choice == "4":
             os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
@@ -103,7 +103,7 @@ def run():
 
         elif choice == "5":
             os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
@@ -114,19 +114,17 @@ def run():
             os.system("clear")
 
         elif choice == "6":
-            os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
             ids_of_all_customers = sales.get_all_customer_ids_from_table(table)
-            print("ids of all customers who purchased games:\n")
-            terminal_view.print_table([ids_of_all_customers], "")
+            print("ids of all customers who purchased games:\n", ids_of_all_customers)
             common.waiting()
             os.system("clear")
 
         elif choice == "7":
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
@@ -136,7 +134,7 @@ def run():
             os.system("clear")
 
         elif choice == "8":
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
@@ -160,7 +158,7 @@ def run():
             os.system("clear")
 
         elif choice == "10":
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
@@ -171,7 +169,7 @@ def run():
 
         elif choice == "11":
             os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
@@ -182,19 +180,16 @@ def run():
             os.system("clear")
 
         elif choice == "12":
-            os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
             buyer_id_spent_most_and_money = sales.get_the_buyer_id_spent_most_and_the_money_spent(table)
-            print("Customer's id who spent the most and the amount spent:\n")
-            terminal_view.print_table([buyer_id_spent_most_and_money], ["* customer's id", "* money"])
+            print("Customer's id who spent the most and the amount spent:\n", buyer_id_spent_most_and_money)
             common.waiting()
             os.system("clear")
 
         elif choice == "13":
-            os.system("clear")
             file_name_sales = common.get_input("Choose a file with sales: ")
             if file_name_sales == "":
                 file_name_sales = file
@@ -206,26 +201,23 @@ def run():
             the_most_frequent_buyers = sales.get_the_most_frequent_buyers_names(table_from_customers,
                                                                                 table_from_sales,
                                                                                 num=1)
-            print("The most frequent buyers:\n")
-            terminal_view.print_table([the_most_frequent_buyers], "")
+            print("The most frequent buyers:\n", the_most_frequent_buyers)
             common.waiting()
             os.system("clear")
 
         elif choice == "14":
-            os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = file
             table = common.get_table_from_file(file_name)
             the_most_frequent_buyers_ids = sales.get_the_most_frequent_buyers_ids(table, num=1)
-            print("ids of the most frequent buyers:\n")
-            terminal_view.print_table([the_most_frequent_buyers_ids], "")
+            print("ids of the most frequent buyers:\n", the_most_frequent_buyers_ids)
             common.waiting()
             os.system("clear")
 
         elif choice == "15":
             os.system("clear")
-            file_name = common.get_input("Choose a file: ")
+            file_name = common.get_file()
             if file_name == "":
                 file_name = "model/crm/customers.csv"
             table = common.get_table_from_file(file_name)

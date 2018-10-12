@@ -153,3 +153,17 @@ def get_table_from_file(file_name):
 def get_input(title):
     inp = input(title)
     return inp
+
+
+def get_file():
+    file_exists = True
+    while file_exists:
+        try:
+            inp = input("Choose file: ")
+            if inp == "":
+                return inp
+            with open(inp, "r") as file:
+                pass
+            return inp
+        except FileNotFoundError:
+            print("There is no such file")
