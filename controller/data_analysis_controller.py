@@ -38,11 +38,8 @@ def run():
                "Get the customer's id by the id of a game",
                "Show ids of all customers who purchased games",
                "Show sale ids of all customers",
-               "Show the sale numbers of games for each customer",
                "Show the owner of a recently sold game",
                "Show the owner's id of a recently sold game",
-               "Show the customer who spent the most and the amount spent",
-               "Show the customer's id who spent the most and the amount spent",
                "Show the most frequent buyers",
                "Show the ids of the most frequent buyers",
                "Get the customer by id"]
@@ -62,6 +59,7 @@ def run():
 
         elif choice == "2":
             os.system("clear")
+            print("Get game title by id\n")
             file_name = common.get_file()
             if file_name == "":
                 file_name = file
@@ -85,6 +83,7 @@ def run():
 
         elif choice == "4":
             os.system("clear")
+            print("Get the sum of games' prices by their id\n")
             file_name = common.get_file()
             if file_name == "":
                 file_name = file
@@ -103,6 +102,7 @@ def run():
 
         elif choice == "5":
             os.system("clear")
+            print("Get the customer's id by the id of a game\n")
             file_name = common.get_file()
             if file_name == "":
                 file_name = file
@@ -134,16 +134,6 @@ def run():
             os.system("clear")
 
         elif choice == "8":
-            file_name = common.get_file()
-            if file_name == "":
-                file_name = file
-            table = common.get_table_from_file(file_name)
-            num_of_sales_per_customer = sales.get_num_of_sales_per_customer_ids_from_table(table)
-            print("Sale numbers of games for each customer: ", num_of_sales_per_customer)
-            common.waiting()
-            os.system("clear")
-
-        elif choice == "9":
             file_name_sales = common.get_input("Choose a file with sales: ")
             if file_name_sales == "":
                 file_name_sales = file
@@ -157,7 +147,7 @@ def run():
             common.waiting()
             os.system("clear")
 
-        elif choice == "10":
+        elif choice == "9":
             file_name = common.get_file()
             if file_name == "":
                 file_name = file
@@ -167,29 +157,7 @@ def run():
             common.waiting()
             os.system("clear")
 
-        elif choice == "11":
-            os.system("clear")
-            file_name = common.get_file()
-            if file_name == "":
-                file_name = file
-            table = common.get_table_from_file(file_name)
-            buyer_name_spent_most_and_money = sales.get_the_buyer_name_spent_most_and_the_money_spent(table)
-            print("Customer who spent the most and the amount spent:\n")
-            terminal_view.print_table([buyer_name_spent_most_and_money], ["* customer", "* money"])
-            common.waiting()
-            os.system("clear")
-
-        elif choice == "12":
-            file_name = common.get_file()
-            if file_name == "":
-                file_name = file
-            table = common.get_table_from_file(file_name)
-            buyer_id_spent_most_and_money = sales.get_the_buyer_id_spent_most_and_the_money_spent(table)
-            print("Customer's id who spent the most and the amount spent:\n", buyer_id_spent_most_and_money)
-            common.waiting()
-            os.system("clear")
-
-        elif choice == "13":
+        elif choice == "10":
             file_name_sales = common.get_input("Choose a file with sales: ")
             if file_name_sales == "":
                 file_name_sales = file
@@ -205,7 +173,7 @@ def run():
             common.waiting()
             os.system("clear")
 
-        elif choice == "14":
+        elif choice == "11":
             file_name = common.get_file()
             if file_name == "":
                 file_name = file
@@ -215,8 +183,9 @@ def run():
             common.waiting()
             os.system("clear")
 
-        elif choice == "15":
+        elif choice == "12":
             os.system("clear")
+            print("Get the customer by id\n")
             file_name = common.get_file()
             if file_name == "":
                 file_name = "model/crm/customers.csv"
