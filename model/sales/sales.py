@@ -281,7 +281,7 @@ def get_all_sales_ids_for_customer_ids_form_table(table):
         key = game[-1]
         value = game[0]
         my_dictionary[key] = [value]
-
+        client = game[-1]
         if key == client:
             id_list.append(value)
             my_dictionary[key] = id_list
