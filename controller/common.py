@@ -167,3 +167,17 @@ def get_file():
             return inp
         except FileNotFoundError:
             print("There is no such file")
+
+
+def get_double_file(title):
+    file_exists = True
+    while file_exists:
+        try:
+            inp = input(title)
+            if inp == "":
+                return inp
+            with open(inp, "r") as file:
+                pass
+            return inp
+        except FileNotFoundError:
+            print("There is no such file")
