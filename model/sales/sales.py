@@ -212,16 +212,19 @@ def get_the_sum_of_prices_from_table(table, item_ids):
         number: the sum of the items' prices
     """
 
-    sum_price = []
-    for element in table:
-        product_id = 'kH34Ju#&'
-        item_id = element[0]  
-        if product_id in item_id:
-            item_price = int(element[2])
-            sum_price.append(item_price)
-            result = sum(sum_price)
-            
-    return result
+    def get_the_sum_of_a_single_id(table, item_id):
+        sum_price = 0
+        for game in table:
+            item_price = int(game[2])
+            if item_id in game:
+                sum_price = item_price + sum_price
+
+        return sum_price
+
+    sum_prices = 0
+    for item in item_ids:
+        sum_prices += get_the_sum_of_a_single_id(table, item)
+    return sum_prices
 
 
 def get_customer_id_by_sale_id_from_table(table, sale_id):
