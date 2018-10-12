@@ -25,6 +25,10 @@ def run():
                   "* customer's id"]
 
     # ! sign with a position is unfinished function but added in options
+    # !8. Show the sale numbers of games for each customer-274
+    # !11. Show the customer who spent the most and the amount spent-365"
+    # !12. Show the customer's id who spent the most and the amount spent-376"
+    # !13. Show the most frequent buyers-387
 
     options = ["Print table",
                "Get game title by id",
@@ -33,12 +37,12 @@ def run():
                "Get the customer's id by the id of a game",
                "Show ids of all customers who purchased games",
                "Show sale ids of all customers",
-               "!8.Show the sale numbers of games for each customer-274",
+               "Show the sale numbers of games for each customer",
                "Show the owner of a recently sold game",
                "Show the owner's id of a recently sold game",
-               "!Show the customer who spent the most and the amount spent-365",
-               "!Show the customer's id who spent the most and the amount spent-376",
-               "!Show the most frequent buyers-387",
+               "Show the customer who spent the most and the amount spent",
+               "Show the customer's id who spent the most and the amount spent",
+               "Show the most frequent buyers",
                "Show the ids of the most frequent buyers",
                "Get the customer by id"]
 
