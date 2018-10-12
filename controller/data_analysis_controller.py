@@ -134,10 +134,10 @@ def run():
             os.system("clear")
 
         elif choice == "8":
-            file_name_sales = common.get_input("Choose a file with sales: ")
+            file_name_sales = common.get_double_file("Choose a file with sales: ")
             if file_name_sales == "":
                 file_name_sales = file
-            file_name_customer = common.get_input("Choose a file with customers: ")
+            file_name_customer = common.get_double_file("Choose a file with customers: ")
             if file_name_customer == "":
                 file_name_customer = "model/crm/customers.csv"
             table_from_customers = common.get_table_from_file(file_name_customer)
@@ -158,10 +158,10 @@ def run():
             os.system("clear")
 
         elif choice == "10":
-            file_name_sales = common.get_input("Choose a file with sales: ")
+            file_name_sales = common.get_double_file("Choose a file with sales: ")
             if file_name_sales == "":
                 file_name_sales = file
-            file_name_customer = common.get_input("Choose a file with customers: ")
+            file_name_customer = common.get_double_file("Choose a file with customers: ")
             if file_name_customer == "":
                 file_name_customer = "model/crm/customers.csv"
             table_from_customers = common.get_table_from_file(file_name_customer)
